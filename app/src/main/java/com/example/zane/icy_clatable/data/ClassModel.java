@@ -3,7 +3,7 @@ package com.example.zane.icy_clatable.data;
 import android.content.Context;
 
 import com.example.zane.icy_clatable.app.App;
-import com.example.zane.icy_clatable.config.Config;
+import com.example.zane.icy_clatable.config.ServiceApiConfig;
 import com.example.zane.icy_clatable.data.bean.Clazz;
 import com.example.zane.icy_clatable.data.server.SchedulerTransform;
 import com.example.zane.icy_clatable.data.server.ServiceApi;
@@ -78,7 +78,7 @@ public class ClassModel {
         client.setCache(cache);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Config.BASE_URL)
+                .baseUrl(ServiceApiConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();

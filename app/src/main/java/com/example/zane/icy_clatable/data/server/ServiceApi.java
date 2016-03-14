@@ -13,7 +13,7 @@ import rx.Observable;
 public interface ServiceApi {
 
     @Headers("Cache-Control: public, max-age=3600")
-    @GET("oracle_jscx0428.php")
-    Observable<Clazz> getClassData(@Query("UsrID") String userId);
+    @GET("kebiao.php")
+    Observable<Clazz> getClassData(@Query("id") String userId);
     
 }

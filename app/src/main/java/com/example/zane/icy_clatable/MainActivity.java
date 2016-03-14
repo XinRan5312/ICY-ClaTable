@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onNext(Clazz clazz) {
-                                Toast.makeText(MainActivity.this, String.valueOf(clazz), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, String.valueOf(clazz.getClassX().get(0)), Toast.LENGTH_SHORT).show();
                             }
                         });
             }
