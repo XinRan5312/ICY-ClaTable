@@ -17,14 +17,10 @@ public class App extends Application{
         super.onCreate();
         ExUtils.initialize(this);
         LogUtils.DEBUG = true;
+        instance = this;
     }
 
     public static App getInstance(){
-
-        if (instance == null){
-            instance = new App();
-        }
-
         return instance;
     }
 }
