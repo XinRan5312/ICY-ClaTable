@@ -4,6 +4,11 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="background">#EEEEEE</color>
+    <color name="class1">#EBBDA4</color>
+    <color name="class2">#A4C7EB</color>
+    <color name="class3">#FADD7F</color>
+    <color name="class4">#B69EDE</color>
+    <color name="class5">#E394B2</color>
     <color name="colorText">#FFFF</color>
     <color name="white">#ffffff</color><!--白色 -->
     <color name="ivory">#fffff0</color><!--象牙色 -->
@@ -96,7 +101,7 @@
     <color name="saddlebrown">#8b4513</color><!--重褐色 -->
     <color name="darkmagenta">#8b008b</color><!--暗洋红 -->
     <color name="darkred">#8b0000</color><!--暗红色 -->
-    <color name="blueviolet">#8a2be2</color><!--紫罗兰蓝色 -->
+    <color name="blueviolet">#cccccc</color><!--紫罗兰蓝色 -->
     <color name="lightskyblue">#87cefa</color><!--亮天蓝色 -->
     <color name="skyblue">#87ceeb</color><!--天蓝色 -->
     <color name="gray">#808080</color><!--灰色 -->
