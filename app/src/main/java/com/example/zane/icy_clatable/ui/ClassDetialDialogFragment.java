@@ -62,6 +62,16 @@ public class ClassDetialDialogFragment extends DialogFragment{
         views.add(view1);
         views.add(view2);
 
+        //设置指示器
+        setUpCircle();
+
+        adapter = new ViewPageAdapter(views);
+        viewPager.setAdapter(adapter);
+
+        return view;
+    }
+
+    public void setUpCircle(){
         //添加小圆点，通过view的size来决定其中一个imageview是否gone
         final Drawable drawable_normal = getActivity().getResources().getDrawable(R.drawable.circle_normal);
         final Drawable drawable_select = getActivity().getResources().getDrawable(R.drawable.circle_select);
@@ -94,13 +104,5 @@ public class ClassDetialDialogFragment extends DialogFragment{
             circle1.setBackground(drawable_select);
             circle2.setVisibility(View.GONE);
         }
-
-
-
-
-        adapter = new ViewPageAdapter(views);
-        viewPager.setAdapter(adapter);
-
-        return view;
     }
 }
