@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/name"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="课程"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="hahahahahahahaha"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/teacher"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="老师"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="hahahahahahahaha"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/classroom"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="教师"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="hahahahahahahaha"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/time"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="时间"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="hahahahahahahaha"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/type"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="类型"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="hahahahahahahaha"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/week"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="周数"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="hahahahahahahaha"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

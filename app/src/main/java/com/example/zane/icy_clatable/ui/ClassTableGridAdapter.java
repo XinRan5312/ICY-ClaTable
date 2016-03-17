@@ -1,6 +1,8 @@
 package com.example.zane.icy_clatable.ui;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ public class ClassTableGridAdapter extends BaseAdapter{
     private List<Integer> colos;
     private LayoutInflater inflater;
 
+
     public ClassTableGridAdapter(Context context){
         colos = ColorConfig.getAllColor();
         inflater = LayoutInflater.from(context);
@@ -45,12 +48,10 @@ public class ClassTableGridAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         ViewHolder viewHolder;
         ImageView imageView = new ImageView(App.getInstance());
-        ViewGroup.LayoutParams params2 = imageView.getLayoutParams();
-
 
         if (convertView == null){
             viewHolder = new ViewHolder();
@@ -62,6 +63,7 @@ public class ClassTableGridAdapter extends BaseAdapter{
         }
 
         viewHolder.imageView.setImageResource(colos.get(position));
+
 
         return convertView;
     }
