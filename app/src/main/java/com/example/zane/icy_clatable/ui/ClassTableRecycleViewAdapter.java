@@ -42,7 +42,7 @@ public class ClassTableRecycleViewAdapter extends RecyclerView.Adapter<ClassTabl
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
-        weekDay = TimeCaluUtils.getCurWeek();
+        weekDay = TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays());
         final String week;
 
         if (weekDay == position){

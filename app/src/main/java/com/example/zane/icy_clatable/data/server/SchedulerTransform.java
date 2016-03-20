@@ -1,6 +1,5 @@
 package com.example.zane.icy_clatable.data.server;
 
-import com.kermit.exutils.utils.ExUtils;
 import com.kermit.exutils.utils.LogUtils;
 
 import rx.Observable;
