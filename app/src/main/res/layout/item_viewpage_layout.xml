@@ -29,7 +29,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="hahahahahahahaha"
+            android:id="@+id/className_viewpage"
             android:gravity="center_vertical"
             android:textSize="14sp"
             android:layout_marginLeft="20dp"
@@ -62,7 +62,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="hahahahahahahaha"
+            android:id="@+id/teacher_viewpage"
             android:gravity="center_vertical"
             android:textSize="14sp"
             android:layout_marginLeft="20dp"
@@ -86,7 +86,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="教师"
+            android:text="教室"
             android:gravity="center_vertical"
             android:textSize="14sp"
             android:layout_marginLeft="20dp"
@@ -95,7 +95,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="hahahahahahahaha"
+            android:id="@+id/classRoom_viewpage"
             android:gravity="center_vertical"
             android:textSize="14sp"
             android:layout_marginLeft="20dp"
@@ -128,7 +128,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="hahahahahahahaha"
+            android:id="@+id/time_viewpage"
             android:gravity="center_vertical"
             android:textSize="14sp"
             android:layout_marginLeft="20dp"
@@ -161,7 +161,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="hahahahahahahaha"
+            android:id="@+id/type_viewpage"
             android:gravity="center_vertical"
             android:textSize="14sp"
             android:layout_marginLeft="20dp"
@@ -194,7 +194,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="hahahahahahahaha"
+            android:id="@+id/week_viewpage"
             android:gravity="center_vertical"
             android:textSize="14sp"
             android:layout_marginLeft="20dp"

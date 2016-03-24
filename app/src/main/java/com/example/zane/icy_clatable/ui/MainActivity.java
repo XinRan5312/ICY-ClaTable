@@ -1,9 +1,12 @@
 package com.example.zane.icy_clatable.ui;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.zane.icy_clatable.R;
@@ -16,34 +19,46 @@ public class MainActivity extends AppCompatActivity {
 
     private Button button;
     private ClassModel classModel;
+    private EditText editTextId;
+    private static final String TAG = "MainActiivty2";
+    public static final String CLAZZ = "clazz";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        editTextId = (EditText)findViewById(R.id.edittext_id);
         button = (Button)findViewById(R.id.button);
         classModel = ClassModel.getInstance();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                classModel.getClassData("2014210876")
-                        .subscribe(new Subscriber<Clazz>() {
-                            @Override
-                            public void onCompleted() {
+                Log.i(TAG, editTextId.getText().toString());
+                if (editTextId.getText().toString() != null) {
+                    classModel.getClassData(editTextId.getText().toString())
+                            .subscribe(new Subscriber<Clazz>() {
+                                @Override
+                                public void onCompleted() {
 
-                            }
+                                }
 
-                            @Override
-                            public void onError(Throwable e) {
-                                Toast.makeText(MainActivity.this, String.valueOf(e), Toast.LENGTH_SHORT).show();
-                            }
+                                @Override
+                                public void onError(Throwable e) {
+                                    Log.i(TAG, String.valueOf(e) + "    error");
+                                }
 
-                            @Override
-                            public void onNext(Clazz clazz) {
-                                Toast.makeText(MainActivity.this, String.valueOf(clazz.getClassX().get(0)), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                                @Override
+                                public void onNext(Clazz clazz) {
+                                    Log.i(TAG, String.valueOf(clazz.getClassX().get(0).getMutilple().get(0).getClassname()) + " size : " + String.valueOf(clazz.getClassX().size()));
+                                    Intent intent = new Intent(MainActivity.this, ClassTableActivity.class);
+                                    intent.putExtra(CLAZZ, clazz);
+                                    startActivity(intent);
+                                }
+                            });
+                }else {
+                    Toast.makeText(MainActivity.this, "学号不能为空哦!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

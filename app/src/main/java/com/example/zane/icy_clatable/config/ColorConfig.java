@@ -31,9 +31,20 @@ public class ColorConfig {
         }
     }
 
-    public static List<Integer> getAllColor(){
+    public static List<Integer> getAllColor(List<Integer> nullPosition){
+        boolean isSame = false;
         for (int i = 0; i < 42; i++){
-            Colors.add(getRandomColor());
+            for (int j = 0; j < nullPosition.size(); j++){
+                if (i == nullPosition.get(j)){
+                    isSame = true;
+                    Colors.add(R.color.white);
+                    break;
+                }
+            }
+            if (!isSame){
+                Colors.add(getRandomColor());
+            }
+            isSame = false;
         }
 
         return Colors;
