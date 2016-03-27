@@ -40,17 +40,13 @@ public class MainActivity extends AppCompatActivity {
                             .subscribe(new Subscriber<Clazz>() {
                                 @Override
                                 public void onCompleted() {
-
                                 }
-
                                 @Override
                                 public void onError(Throwable e) {
-                                    Log.i(TAG, String.valueOf(e) + "    error");
+                                    Toast.makeText(MainActivity.this, String.valueOf(e) + "    error", Toast.LENGTH_SHORT).show();
                                 }
-
                                 @Override
                                 public void onNext(Clazz clazz) {
-                                    Log.i(TAG, String.valueOf(clazz.getClassX().get(0).getMutilple().get(0).getClassname()) + " size : " + String.valueOf(clazz.getClassX().size()));
                                     Intent intent = new Intent(MainActivity.this, ClassTableActivity.class);
                                     intent.putExtra(CLAZZ, clazz);
                                     startActivity(intent);

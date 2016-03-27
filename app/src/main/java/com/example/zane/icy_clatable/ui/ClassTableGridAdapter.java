@@ -97,6 +97,7 @@ public class ClassTableGridAdapter extends BaseAdapter{
 
         isNull = false;
         return convertView;
+
     }
 
     class ViewHolder{
