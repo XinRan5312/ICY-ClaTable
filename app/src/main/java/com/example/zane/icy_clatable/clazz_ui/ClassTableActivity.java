@@ -1,22 +1,20 @@
-package com.example.zane.icy_clatable.ui;
+package com.example.zane.icy_clatable.clazz_ui;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.zane.icy_clatable.MainActivity;
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.app.App;
 import com.example.zane.icy_clatable.config.WeeksConfig;
 import com.example.zane.icy_clatable.data.bean.Clazz;
-import com.example.zane.icy_clatable.event.ClazzDetailEvent;
 import com.example.zane.icy_clatable.event.WeekChooseEvent;
 import com.example.zane.icy_clatable.utils.TimeCaluUtils;
 

@@ -1,15 +1,10 @@
-package com.example.zane.icy_clatable.ui;
+package com.example.zane.icy_clatable.clazz_ui;
 
-import android.app.Activity;
 import android.app.DialogFragment;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,18 +12,12 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.zane.icy_clatable.R;
-import com.example.zane.icy_clatable.app.App;
 import com.example.zane.icy_clatable.data.bean.Clazz;
-import com.example.zane.icy_clatable.event.ClazzDetailEvent;
-import com.example.zane.icy_clatable.event.WeekChooseEvent;
 import com.kermit.exutils.utils.ExUtils;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.zane.icy_clatable.ui;
+package com.example.zane.icy_clatable.clazz_ui;
 
 import android.app.DialogFragment;
 import android.os.Bundle;

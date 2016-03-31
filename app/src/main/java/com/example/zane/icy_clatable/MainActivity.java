@@ -1,4 +1,4 @@
-package com.example.zane.icy_clatable.ui;
+package com.example.zane.icy_clatable;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.zane.icy_clatable.R;
+import com.example.zane.icy_clatable.clazz_ui.ClassTableActivity;
 import com.example.zane.icy_clatable.data.ClassModel;
 import com.example.zane.icy_clatable.data.bean.Clazz;
 
@@ -18,6 +18,7 @@ import rx.Subscriber;
 public class MainActivity extends AppCompatActivity {
 
     private Button button;
+    private Button button_calendar;
     private ClassModel classModel;
     private EditText editTextId;
     private static final String TAG = "MainActiivty2";
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         editTextId = (EditText)findViewById(R.id.edittext_id);
         button = (Button)findViewById(R.id.button);
+        button_calendar = (Button)findViewById(R.id.button_calendar);
         classModel = ClassModel.getInstance();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
