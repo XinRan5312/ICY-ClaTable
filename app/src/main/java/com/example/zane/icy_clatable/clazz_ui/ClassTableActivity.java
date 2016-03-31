@@ -71,8 +71,16 @@ public class ClassTableActivity extends AppCompatActivity{
         setupAllClazz();
 
         toolbar.setTitle(WeeksConfig.weeks[TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays())] + "(本周)");
-        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setNavigationIcon(R.drawable.back4);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

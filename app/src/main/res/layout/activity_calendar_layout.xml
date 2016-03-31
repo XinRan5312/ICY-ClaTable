@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:theme="@style/MyCustomToolBarStyle"
+        >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_carlendar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background_calendar"
+        android:gravity="center"
+        android:theme="@style/MyCustomToolBarStyle"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:titleTextAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+    </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,8 +53,8 @@
             android:layout_alignLeft="@id/textview_calendar_year"
             android:text="30"
             android:textColor="@color/white"
-            android:textSize="38sp"
-            android:layout_marginTop="20dp"
+            android:textSize="44sp"
+            android:layout_marginTop="10dp"
             />
 
         <LinearLayout
@@ -81,9 +100,9 @@
             android:layout_height="wrap_content"
             android:text="备注"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="16sp"
             android:id="@+id/remarks"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="40dp"
             />
 
         <LinearLayout

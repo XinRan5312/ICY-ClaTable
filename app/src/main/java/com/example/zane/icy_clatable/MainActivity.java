@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.zane.icy_clatable.calendar_ui.CarlendarActivity;
 import com.example.zane.icy_clatable.clazz_ui.ClassTableActivity;
 import com.example.zane.icy_clatable.data.ClassModel;
 import com.example.zane.icy_clatable.data.bean.Clazz;
@@ -32,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
         editTextId = (EditText)findViewById(R.id.edittext_id);
         button = (Button)findViewById(R.id.button);
         button_calendar = (Button)findViewById(R.id.button_calendar);
+        button_calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CarlendarActivity.class));
+            }
+        });
         classModel = ClassModel.getInstance();
         button.setOnClickListener(new View.OnClickListener() {
             @Override

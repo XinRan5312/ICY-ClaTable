@@ -27,9 +27,10 @@
         </activity>
 
        <activity android:name=".clazz_ui.ClassTableActivity"
-           android:configChanges="orientation">
+           android:configChanges="orientation"/>
 
-       </activity>
+        <activity android:name=".calendar_ui.CarlendarActivity"
+                  android:configChanges="orientation"/>
 
     </application>
 
