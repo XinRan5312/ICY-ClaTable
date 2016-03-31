@@ -4,6 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="background">#EEEEEE</color>
+    <color name="background_calendar">#03a9f5</color>
+    <color name="calendar_week_color">#7D86BA</color>
+    <color name="calendar_month_color">#92A6D2</color>
+    <color name="calendar_day_pasted_color">#C4C4C4</color>
+    <color name="calendar_freeday_pasted_color">#ADB4C7</color>
+    <color name="calendar_freeday_color">#7D86BA</color>
     <color name="class1">#EBBDA4</color>
     <color name="class2">#A4C7EB</color>
     <color name="class3">#FADD7F</color>

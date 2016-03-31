@@ -2,6 +2,7 @@ package com.example.zane.icy_clatable.app;
 
 import android.app.Application;
 
+import com.facebook.stetho.Stetho;
 import com.kermit.exutils.utils.ExUtils;
 import com.kermit.exutils.utils.LogUtils;
 
@@ -18,6 +19,7 @@ public class App extends Application{
         ExUtils.initialize(this);
         LogUtils.DEBUG = true;
         instance = this;
+        Stetho.initializeWithDefaults(this);
     }
 
     public static App getInstance(){

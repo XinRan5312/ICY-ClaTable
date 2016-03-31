@@ -8,6 +8,7 @@ import com.example.zane.icy_clatable.data.bean.Clazz;
 import com.example.zane.icy_clatable.data.server.HeaderInterceptors;
 import com.example.zane.icy_clatable.data.server.SchedulerTransform;
 import com.example.zane.icy_clatable.data.server.ServiceApi;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 
 import okhttp3.OkHttpClient;
@@ -39,11 +40,13 @@ public class ClassModel {
 
     public ServiceApi providesClassDataService(){
 
+        //添加body日志打印，http，stetho调试的拦截器
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .addNetworkInterceptor(new HeaderInterceptors())
+                .addNetworkInterceptor(new StethoInterceptor())
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()

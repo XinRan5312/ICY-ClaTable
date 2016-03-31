@@ -2,9 +2,10 @@ package com.example.zane.icy_clatable.data.server;
 
 import com.example.zane.icy_clatable.data.bean.Clazz;
 
-import retrofit.http.GET;
-import retrofit.http.Headers;
-import retrofit.http.Query;
+
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**

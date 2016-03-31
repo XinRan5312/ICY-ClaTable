@@ -20,4 +20,22 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="calendar_top_text_data">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
+    
+    <style name="calendar_mid_image_circle">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:src">@drawable/pointblue</item>
+    </style>
+
+    <style name="calendar_mid_layout">
+        <item name="android:layout_marginTop">10dp</item>
+
+    </style>
+
 </resources>
