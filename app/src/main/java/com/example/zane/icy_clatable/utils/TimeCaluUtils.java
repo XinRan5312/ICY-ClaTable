@@ -22,6 +22,11 @@ public class TimeCaluUtils {
         return (int)((calendar_now.getTimeInMillis() - calendar_start.getTimeInMillis()) / (60 * 60 * 24 * 1000));
     }
 
+    //返回任意一天距离开学隔了多少天
+    public static int CaluDays_random(long timeMillis){
+        calendar_start.set(firstDay[0], firstDay[1], firstDay[2], firstDay[3], firstDay[4], firstDay[5]);
+        return (int)((timeMillis - calendar_start.getTimeInMillis()) / (60 * 60 * 24 * 1000));
+    }
 
     //返回某天的日期
     public static int getCurDay(int n){

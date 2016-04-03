@@ -31,11 +31,21 @@
     <style name="calendar_mid_image_circle">
         <item name="android:layout_width">10dp</item>
         <item name="android:layout_height">10dp</item>
-        <item name="android:src">@drawable/pointblue</item>
+        <item name="android:src">@drawable/point_white</item>
     </style>
 
     <style name="calendar_mid_layout">
         <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="calendar_week">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="calendar_week2">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
 
     </style>
 

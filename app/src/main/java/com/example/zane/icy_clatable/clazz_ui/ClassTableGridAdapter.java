@@ -45,7 +45,7 @@ public class ClassTableGridAdapter extends BaseAdapter{
 
     @Override
     public Object getItem(int position) {
-        return colos.get(position);
+        return position;
     }
 
     @Override
