@@ -15,6 +15,7 @@ import com.example.zane.icy_clatable.data.ClassModel;
 import com.example.zane.icy_clatable.data.bean.Clazz;
 
 import rx.Subscriber;
+import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,16 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, editTextId.getText().toString());
                 if (editTextId.getText().toString() != null) {
                     classModel.getClassData(editTextId.getText().toString())
-                            .subscribe(new Subscriber<Clazz>() {
+                            .subscribe(new Action1<Clazz>() {
                                 @Override
-                                public void onCompleted() {
-                                }
-                                @Override
-                                public void onError(Throwable e) {
-                                    Toast.makeText(MainActivity.this, String.valueOf(e) + "    error", Toast.LENGTH_SHORT).show();
-                                }
-                                @Override
-                                public void onNext(Clazz clazz) {
+                                public void call(Clazz clazz) {
                                     Intent intent = new Intent(MainActivity.this, ClassTableActivity.class);
                                     intent.putExtra(CLAZZ, clazz);
                                     startActivity(intent);

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.zane.icy_clatable.app.App;
 import com.example.zane.icy_clatable.config.ServiceApiConfig;
 import com.example.zane.icy_clatable.data.bean.Clazz;
+import com.example.zane.icy_clatable.data.server.ErrorTransform;
 import com.example.zane.icy_clatable.data.server.HeaderInterceptors;
 import com.example.zane.icy_clatable.data.server.SchedulerTransform;
 import com.example.zane.icy_clatable.data.server.ServiceApi;
@@ -30,6 +31,7 @@ public class ClassModel {
         mContext = App.getInstance();
     }
 
+    //单例
     static class SingletonHolder{
         private static final ClassModel classModel = new ClassModel();
     }
@@ -64,7 +66,8 @@ public class ClassModel {
     public Observable<Clazz> getClassData(String userId){
         return providesClassDataService()
                 .getClassData(userId)
-                .compose(new SchedulerTransform<Clazz>());
+                .compose(new SchedulerTransform<Clazz>())
+                .compose(new ErrorTransform<Clazz>());
     }
 
 }

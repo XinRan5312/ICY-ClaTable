@@ -9,6 +9,7 @@ import okhttp3.CacheControl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import retrofit2.Retrofit;
 
 /**
  * Created by Zane on 16/3/14.
@@ -26,7 +27,7 @@ public class HeaderInterceptors implements Interceptor {
                               .cacheControl(CacheControl.FORCE_CACHE)
                               .build();
         }
-        //获得返回头，如果有网络，就缓存一分钟,没有网络缓存四周
+        //获得响应头，如果有网络，就缓存一分钟,没有网络缓存四周
         Response originalResponse = chain.proceed(request);
         //更改响应头
         if (NetUtils.hasNetwork()){

@@ -1,8 +1,5 @@
 package com.example.zane.icy_clatable.data.bean;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -13,7 +10,6 @@ import java.util.List;
  * 建议你全部改成Parceable，因为我看内部类比较多就简便用这个序列化接口了。但是网络传输这块用Par更好。
  */
 public class Clazz implements Serializable{
-
 
     @SerializedName("class")
     private List<ClassEntity> classX;
