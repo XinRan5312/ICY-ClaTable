@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.zane.icy_clatable.app.App;
 import com.example.zane.icy_clatable.config.ServiceApiConfig;
 import com.example.zane.icy_clatable.data.bean.Clazz;
+import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 import com.example.zane.icy_clatable.data.server.ErrorTransform;
 import com.example.zane.icy_clatable.data.server.HeaderInterceptors;
 import com.example.zane.icy_clatable.data.server.SchedulerTransform;
@@ -63,11 +64,11 @@ public class ClassModel {
 
     }
 
-    public Observable<Clazz> getClassData(String userId){
+    public Observable<Clazz_Two> getClassData(String userId, String kind){
         return providesClassDataService()
-                .getClassData(userId)
-                .compose(new SchedulerTransform<Clazz>())
-                .compose(new ErrorTransform<Clazz>());
+                .getClassData(userId, kind)
+                .compose(new SchedulerTransform<Clazz_Two>());
+                //.compose(new ErrorTransform<Clazz_Two>());
     }
 
 }

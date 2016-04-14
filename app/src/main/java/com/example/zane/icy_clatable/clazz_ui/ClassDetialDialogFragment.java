@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.LinearLayout;
 
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.data.bean.Clazz;
+import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 import com.kermit.exutils.utils.ExUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -29,21 +31,18 @@ public class ClassDetialDialogFragment extends DialogFragment{
 
     public static final String PAGES = "pages";
     public static final String CLAZZ_DETAIL = "clazzdetail";
-    private static final String TAG = "ClassDetialDialogFragment";
+    private static final String TAG = "ClassDetialDialog";
 
     private ViewPager viewPager;
     private ViewPageAdapter adapter;
     private List<View> views;
-    private List<Clazz.ClassEntity.MutilpleEntity> clazzes;
+    private List<Clazz_Two.DataEntity> clazzes;
     private LinearLayout circleLayout;
     private ImageView circle1;
     private ImageView circle2;
     private ImageView circle3;
 
 
-    public ClassDetialDialogFragment(List<Clazz.ClassEntity.MutilpleEntity> clazzes){
-        this.clazzes = clazzes;
-    }
 
     @Override
     public void onResume() {
@@ -51,6 +50,10 @@ public class ClassDetialDialogFragment extends DialogFragment{
         Window window = getDialog().getWindow();
         window.setGravity(Gravity.CENTER);
         window.setLayout((int) (ExUtils.getScreenWidth() * 0.8), (int) (ExUtils.getScreenHeight() * 0.6));
+    }
+
+    public void setClazzes(List<Clazz_Two.DataEntity> clazzes){
+        this.clazzes = clazzes;
     }
 
 

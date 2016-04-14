@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.data.bean.Clazz;
+import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
 public class ViewPageAdapter extends PagerAdapter{
 
     private List<View> views;
-    private List<Clazz.ClassEntity.MutilpleEntity> clazzes;
+    private List<Clazz_Two.DataEntity> clazzes;
     private View view;
     private TextView className;
     private TextView teacher;
@@ -25,7 +26,7 @@ public class ViewPageAdapter extends PagerAdapter{
     private TextView type;
     private TextView week;
 
-    public ViewPageAdapter(List<View> views, List<Clazz.ClassEntity.MutilpleEntity> clazzes){
+    public ViewPageAdapter(List<View> views, List<Clazz_Two.DataEntity> clazzes){
         this.views = views;
         this.clazzes = clazzes;
     }
@@ -44,32 +45,42 @@ public class ViewPageAdapter extends PagerAdapter{
     public Object instantiateItem(ViewGroup container, int position) {
         container.addView(views.get(position));
 
-        for (int i = 0; i < views.size(); i++){
-            view = views.get(i);
-            className = (TextView) view.findViewById(R.id.className_viewpage);
-            teacher = (TextView) view.findViewById(R.id.teacher_viewpage);
-            classRoom = (TextView) view.findViewById(R.id.classRoom_viewpage);
-            time = (TextView) view.findViewById(R.id.time_viewpage);
-            type = (TextView) view.findViewById(R.id.type_viewpage);
-            week = (TextView) view.findViewById(R.id.week_viewpage);
+        view = views.get(position);
+        className = (TextView) view.findViewById(R.id.className_viewpage);
+        teacher = (TextView) view.findViewById(R.id.teacher_viewpage);
+        classRoom = (TextView) view.findViewById(R.id.classRoom_viewpage);
+        time = (TextView) view.findViewById(R.id.time_viewpage);
+        type = (TextView) view.findViewById(R.id.type_viewpage);
+        week = (TextView) view.findViewById(R.id.week_viewpage);
 
-            setData(position);
-        }
+        setData(position);
 
         return views.get(position);
     }
 
+    //设置数据
     public void setData(int position){
-        className.setText(clazzes.get(position).getClassname());
-        teacher.setText(clazzes.get(position).getTeachername());
-        classRoom.setText(clazzes.get(position).getClassroom());
-        time.setText("hahaha");
-        type.setText(clazzes.get(position).getObject());
-        week.setText(clazzes.get(position).getTime());
+
+        className.setText(clazzes.get(position).getCourse_name());
+        teacher.setText(clazzes.get(position).getTeacher());
+        classRoom.setText(clazzes.get(position).getClassrom());
+        time.setText(clazzes.get(position).getDuring());
+        type.setText(clazzes.get(position).getKinds());
+
+        String weekDuring="";
+        if (clazzes.get(position).getSingel_or_double().equals(" ")){
+            weekDuring = clazzes.get(position).getBengin_week()+"-"+clazzes.get(position).getEnd_week()+"周";
+        } else if (clazzes.get(position).getSingel_or_double().equals("1")){
+            weekDuring = clazzes.get(position).getBengin_week()+"-"+clazzes.get(position).getEnd_week()+"周(单周)";
+        } else if (clazzes.get(position).getSingel_or_double().equals("2")){
+            weekDuring = clazzes.get(position).getBengin_week()+"-"+clazzes.get(position).getEnd_week()+"周(双周)";
+        }
+        week.setText(weekDuring);
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView(views.get(position));
     }
+
 }

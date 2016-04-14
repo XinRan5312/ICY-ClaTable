@@ -13,9 +13,13 @@ import com.example.zane.icy_clatable.calendar_ui.CarlendarActivity;
 import com.example.zane.icy_clatable.clazz_ui.ClassTableActivity;
 import com.example.zane.icy_clatable.data.ClassModel;
 import com.example.zane.icy_clatable.data.bean.Clazz;
+import com.example.zane.icy_clatable.data.bean.Clazz_Two;
+import com.kermit.exutils.utils.ExUtils;
 
 import rx.Subscriber;
 import rx.functions.Action1;
+import rx.plugins.RxJavaErrorHandler;
+import rx.plugins.RxJavaPlugins;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,19 +44,31 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, CarlendarActivity.class));
             }
         });
+
         classModel = ClassModel.getInstance();
+
+        //默认是本科生了这里!!!!
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, editTextId.getText().toString());
                 if (editTextId.getText().toString() != null) {
-                    classModel.getClassData(editTextId.getText().toString())
-                            .subscribe(new Action1<Clazz>() {
+                    classModel.getClassData(editTextId.getText().toString(), "bks")
+                            .subscribe(new Subscriber<Clazz_Two>() {
                                 @Override
-                                public void call(Clazz clazz) {
-                                    Intent intent = new Intent(MainActivity.this, ClassTableActivity.class);
-                                    intent.putExtra(CLAZZ, clazz);
-                                    startActivity(intent);
+                                public void onCompleted() {
+                                }
+                                @Override
+                                public void onError(Throwable e) {
+                                    ExUtils.Toast(String.valueOf(e));
+                                }
+
+                                @Override
+                                public void onNext(Clazz_Two clazz_two) {
+                                    if (clazz_two.getData() != null){
+                                        Intent intent = new Intent(MainActivity.this, ClassTableActivity.class);
+                                        intent.putExtra(CLAZZ, clazz_two);
+                                        startActivity(intent);
+                                    }
                                 }
                             });
                 }else {

@@ -1,32 +1,32 @@
 package com.example.zane.icy_clatable.data.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Zane on 16/4/9.
  */
-public class Clazz_Two {
+public class Clazz_Two implements Serializable{
 
     /**
      * status : 200
      * message : 操作成功
-     * data : [{"xqj":"2","djj":"3","skcd":"2","dsz":" ","qsz":"1","jsz":"14","week":"1-14周","kcmc":"手机应用程序开发","skls":"罗文龙","jsmc":"2314","range":[1,2,3,4,5,6,7,8,9,10,11,12,13,14]},{"xqj":"1","djj":"5","skcd":"2","dsz":" ","qsz":"1","jsz":"16","week":"1-16周","kcmc":"电子商务概论","skls":"卢华玲","jsmc":"2314","range":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]},{"xqj":"3","djj":"9","skcd":"2","dsz":" ","qsz":"4","jsz":"7","week":"4-7周","kcmc":"形势与政策","skls":"王贵喜","jsmc":"3111","range":[4,5,6,7]},{"xqj":"2","djj":"7","skcd":"2","dsz":" ","qsz":"1","jsz":"11","week":"1-11周","kcmc":"中国近现代史纲要","skls":"罗贤","jsmc":"2105","range":[1,2,3,4,5,6,7,8,9,10,11]},{"xqj":"1","djj":"1","skcd":"2","dsz":" ","qsz":"1","jsz":"15","week":"1-15周","kcmc":"数据结构","skls":"刘友军 ","jsmc":"2314","range":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]},{"xqj":"3","djj":"1","skcd":"2","dsz":"2","qsz":"2","jsz":"18","week":"2-18周","kcmc":"统计学","skls":"卢安文","jsmc":"2314","range":[2,4,6,8,10,12,14,16,18]},{"xqj":"3","djj":"1","skcd":"2","dsz":"1","qsz":"1","jsz":"15","week":"1-15周","kcmc":"计算机系统结构与系统软件","skls":"李昌兵 ","jsmc":"2314","range":[1,3,5,7,9,11,13,15]},{"xqj":"4","djj":"3","skcd":"2","dsz":" ","qsz":"1","jsz":"14","week":"1-14周","kcmc":"数据结构","skls":"刘友军 ","jsmc":"2314","range":[1,2,3,4,5,6,7,8,9,10,11,12,13,14]},{"xqj":"5","djj":"1","skcd":"2","dsz":" ","qsz":"1","jsz":"16","week":"1-16周","kcmc":"统计学","skls":"卢安文","jsmc":"2314","range":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]},{"xqj":"4","djj":"7","skcd":"2","dsz":"1","qsz":"1","jsz":"13","week":"1-13周","kcmc":"手机应用程序开发","skls":"罗文龙","jsmc":"2314","range":[1,3,5,7,9,11,13]},{"xqj":"5","djj":"5","skcd":"2","dsz":" ","qsz":"1","jsz":"16","week":"1-16周","kcmc":"计算机系统结构与系统软件","skls":"李昌兵 ","jsmc":"2314","range":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]},{"xqj":"3","djj":"9","skcd":"2","dsz":" ","qsz":"1","jsz":"3","week":"1-3周","kcmc":"健康教育2","skls":"曾靖婷","jsmc":"2115","range":[1,2,3]}]
+     * data : [{"weekday":"4","during":"第9-10节","begin_class":"9","end_class":"10","singel_or_double":" ","bengin_week":"1","end_week":"16","course_name":"数学建模","teacher":"数模组A","classrom":"3104"},{"weekday":"5","during":"第5-6节","begin_class":"5","end_class":"6","singel_or_double":"2","bengin_week":"2","end_week":"16","course_name":"数据库原理","teacher":"夏英","classrom":"2409"},{"weekday":"3","during":"第9-10节","begin_class":"9","end_class":"10","singel_or_double":" ","bengin_week":"3","end_week":"6","course_name":"形势与政策","teacher":"王小运","classrom":"2301"},{"weekday":"3","during":"第1-2节","begin_class":"1","end_class":"2","singel_or_double":" ","bengin_week":"1","end_week":"17","course_name":"数据库原理","teacher":"夏英","classrom":"2409"},{"weekday":"5","during":"第5-6节","begin_class":"5","end_class":"6","singel_or_double":"1","bengin_week":"1","end_week":"15","course_name":"计算机网络","teacher":"尚凤军  ","classrom":"2411"},{"weekday":"4","during":"第1-2节","begin_class":"1","end_class":"2","singel_or_double":" ","bengin_week":"1","end_week":"17","course_name":"面向对象程序设计－Java","teacher":"唐晓军","classrom":"S319"},{"weekday":"3","during":"第5-6节","begin_class":"5","end_class":"6","singel_or_double":" ","bengin_week":"1","end_week":"17","course_name":"计算机网络","teacher":"尚凤军  ","classrom":"2411"},{"weekday":"2","during":"第3-4节","begin_class":"3","end_class":"4","singel_or_double":" ","bengin_week":"1","end_week":"16","course_name":"操作系统","teacher":"熊安萍  ","classrom":"2105"},{"weekday":"1","during":"第9-10节","begin_class":"9","end_class":"10","singel_or_double":" ","bengin_week":"1","end_week":"3","course_name":"健康教育2","teacher":"严小燕","classrom":"3104"},{"weekday":"4","during":"第7-8节","begin_class":"7","end_class":"8","singel_or_double":" ","bengin_week":"1","end_week":"17","course_name":"英语演讲与辩论","teacher":"伍喆","classrom":"4303"},{"weekday":"4","during":"第3-4节","begin_class":"3","end_class":"4","singel_or_double":"2","bengin_week":"2","end_week":"16","course_name":"操作系统","teacher":"熊安萍  ","classrom":"2105"}]
      */
 
     private int status;
     private String message;
     /**
-     * xqj : 2
-     * djj : 3
-     * skcd : 2
-     * dsz :
-     * qsz : 1
-     * jsz : 14
-     * week : 1-14周
-     * kcmc : 手机应用程序开发
-     * skls : 罗文龙
-     * jsmc : 2314
-     * range : [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+     * weekday : 4
+     * during : 第9-10节
+     * begin_class : 9
+     * end_class : 10
+     * singel_or_double :
+     * bengin_week : 1
+     * end_week : 16
+     * course_name : 数学建模
+     * teacher : 数模组A
+     * classrom : 3104
      */
 
     private List<DataEntity> data;
@@ -55,105 +55,105 @@ public class Clazz_Two {
         this.data = data;
     }
 
-    public static class DataEntity {
-        private String xqj;
-        private String djj;
-        private String skcd;
-        private String dsz;
-        private String qsz;
-        private String jsz;
-        private String week;
-        private String kcmc;
-        private String skls;
-        private String jsmc;
-        private List<Integer> range;
+    public static class DataEntity implements Serializable{
+        private String weekday;
+        private String during;
+        private String begin_class;
+        private String end_class;
+        private String singel_or_double;
+        private String bengin_week;
+        private String end_week;
+        private String course_name;
+        private String teacher;
+        private String classrom;
+        private String kinds;
 
-        public String getXqj() {
-            return xqj;
+        public String getKinds() {
+            return kinds;
         }
 
-        public void setXqj(String xqj) {
-            this.xqj = xqj;
+        public void setKinds(String kinds) {
+            this.kinds = kinds;
         }
 
-        public String getDjj() {
-            return djj;
+        public String getWeekday() {
+            return weekday;
         }
 
-        public void setDjj(String djj) {
-            this.djj = djj;
+        public void setWeekday(String weekday) {
+            this.weekday = weekday;
         }
 
-        public String getSkcd() {
-            return skcd;
+        public String getDuring() {
+            return during;
         }
 
-        public void setSkcd(String skcd) {
-            this.skcd = skcd;
+        public void setDuring(String during) {
+            this.during = during;
         }
 
-        public String getDsz() {
-            return dsz;
+        public String getBegin_class() {
+            return begin_class;
         }
 
-        public void setDsz(String dsz) {
-            this.dsz = dsz;
+        public void setBegin_class(String begin_class) {
+            this.begin_class = begin_class;
         }
 
-        public String getQsz() {
-            return qsz;
+        public String getEnd_class() {
+            return end_class;
         }
 
-        public void setQsz(String qsz) {
-            this.qsz = qsz;
+        public void setEnd_class(String end_class) {
+            this.end_class = end_class;
         }
 
-        public String getJsz() {
-            return jsz;
+        public String getSingel_or_double() {
+            return singel_or_double;
         }
 
-        public void setJsz(String jsz) {
-            this.jsz = jsz;
+        public void setSingel_or_double(String singel_or_double) {
+            this.singel_or_double = singel_or_double;
         }
 
-        public String getWeek() {
-            return week;
+        public String getBengin_week() {
+            return bengin_week;
         }
 
-        public void setWeek(String week) {
-            this.week = week;
+        public void setBengin_week(String bengin_week) {
+            this.bengin_week = bengin_week;
         }
 
-        public String getKcmc() {
-            return kcmc;
+        public String getEnd_week() {
+            return end_week;
         }
 
-        public void setKcmc(String kcmc) {
-            this.kcmc = kcmc;
+        public void setEnd_week(String end_week) {
+            this.end_week = end_week;
         }
 
-        public String getSkls() {
-            return skls;
+        public String getCourse_name() {
+            return course_name;
         }
 
-        public void setSkls(String skls) {
-            this.skls = skls;
+        public void setCourse_name(String course_name) {
+            this.course_name = course_name;
         }
 
-        public String getJsmc() {
-            return jsmc;
+        public String getTeacher() {
+            return teacher;
         }
 
-        public void setJsmc(String jsmc) {
-            this.jsmc = jsmc;
+        public void setTeacher(String teacher) {
+            this.teacher = teacher;
         }
 
-        public List<Integer> getRange() {
-            return range;
+        public String getClassrom() {
+            return classrom;
         }
 
-        public void setRange(List<Integer> range) {
-            this.range = range;
+        public void setClassrom(String classrom) {
+            this.classrom = classrom;
         }
     }
 }

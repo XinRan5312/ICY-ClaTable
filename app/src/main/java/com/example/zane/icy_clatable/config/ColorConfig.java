@@ -15,7 +15,7 @@ public class ColorConfig {
 
     private static final Random RANDOM = new Random();
 
-    private static int getRandomColor() {
+    public static int getRandomColor() {
         switch (RANDOM.nextInt(5)) {
             default:
             case 0:

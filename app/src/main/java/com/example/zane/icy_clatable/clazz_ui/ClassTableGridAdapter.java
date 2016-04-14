@@ -1,6 +1,7 @@
 package com.example.zane.icy_clatable.clazz_ui;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.config.ColorConfig;
 import com.example.zane.icy_clatable.data.bean.Clazz;
+import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 
 import java.util.List;
 
@@ -23,15 +25,16 @@ public class ClassTableGridAdapter extends BaseAdapter{
 
     private static final String TAG = "ClassTableGridAdapter";
 
-    private List<Integer> colos;
+    //private List<Integer> colos;
     private LayoutInflater inflater;
     private List<Integer> mutiplyPosition;
-    private List<Clazz.ClassEntity> clazzes;
+    private List<List<Clazz_Two.DataEntity>> clazzes;
     private List<Integer> nullPosition;
     private boolean isNull = false;
 
-    public ClassTableGridAdapter(Context context, List<Integer> nullPosition, List<Integer> mutiplyPosition, List<Clazz.ClassEntity> clazzes){
-        colos = ColorConfig.getAllColor(nullPosition);
+
+    public ClassTableGridAdapter(Context context, List<Integer> nullPosition, List<Integer> mutiplyPosition, List<List<Clazz_Two.DataEntity>> clazzes){
+        //colos = ColorConfig.getAllColor(nullPosition);
         inflater = LayoutInflater.from(context);
         this.mutiplyPosition = mutiplyPosition;
         this.clazzes = clazzes;
@@ -40,7 +43,7 @@ public class ClassTableGridAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return colos.size();
+        return clazzes.size();
     }
 
     @Override
@@ -57,6 +60,7 @@ public class ClassTableGridAdapter extends BaseAdapter{
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         ViewHolder viewHolder;
+        //boolean isMutiply = false;
 
         if (convertView == null){
             viewHolder = new ViewHolder();
@@ -70,11 +74,14 @@ public class ClassTableGridAdapter extends BaseAdapter{
             viewHolder = (ViewHolder)convertView.getTag();
         }
 
-        viewHolder.backGround.setImageResource(colos.get(position));
+        //viewHolder.backGround.setImageResource(colos.get(position));
 
         for (int i = 0; i < mutiplyPosition.size(); i++){
             if (position == mutiplyPosition.get(i)){
+                //设置折角图片可见
                 viewHolder.imageFlode.setVisibility(View.VISIBLE);
+
+                //isMutiply = true;
             }
         }
 
@@ -83,15 +90,20 @@ public class ClassTableGridAdapter extends BaseAdapter{
             if (position != nullPosition.get(i)){
                 continue;
             } else {
+                Log.i(TAG, i+" null");
                 isNull = true;
                 viewHolder.frameLayout.setClickable(false);
+
+                viewHolder.backGround.setImageResource(R.color.white);
                 break;
             }
         }
 
+        //课表改成42格的position。。。
         if (!isNull){
-            viewHolder.textView.setText(clazzes.get(position).getMutilple().get(0).getClassname()+"\n"+"@"
-                                                + clazzes.get(position).getMutilple().get(0).getClassroom());
+            viewHolder.backGround.setImageResource(ColorConfig.getRandomColor());
+            viewHolder.textView.setText(clazzes.get(position).get(0).getCourse_name()+"\n"+"@"
+                                                + clazzes.get(position).get(0).getClassrom());
         }
 
         isNull = false;

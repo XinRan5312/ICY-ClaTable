@@ -1,5 +1,7 @@
 package com.example.zane.icy_clatable.data.server;
 
+import android.util.Log;
+
 import com.kermit.exutils.utils.ExUtils;
 import com.kermit.exutils.utils.LogUtils;
 
@@ -30,14 +32,15 @@ public class ErrorTransform<T> implements Observable.Transformer<T, T>{
             @Override
             public void call(Throwable throwable) {
 
-                //判断错误发生在哪里
-                LogUtils.i(TAG, throwable.getClass().getName()+" "+throwable.getLocalizedMessage());
-                String errorMessage;
+                //判断异常是什么类型
+                Log.i(TAG, throwable.getClass().getName()+" "+throwable.getLocalizedMessage()+" "+throwable.getMessage());
+                String errorMessage = "hh";
+
 
                 //通过状态码判断错误
                 //由于后台给的状态信息很不规范，所以应该没有errorBody给我。科科
                 //我就全部拿message了，几个message也不知道是什么意思。。。唉
-                if (throwable instanceof Throwable) {
+                if (throwable instanceof HttpException) {
                     HttpException response = (HttpException) throwable;
                     switch (response.code()){
                         case 404:
@@ -57,9 +60,10 @@ public class ErrorTransform<T> implements Observable.Transformer<T, T>{
                             break;
                     }
                 } else {
+                    Log.i(TAG, errorMessage+"2");
                     errorMessage = "网络错误";
                 }
-
+                Log.i(TAG, errorMessage);
                 ExUtils.Toast(errorMessage);
             }
         }).onErrorResumeNext(Observable.<T>empty());
