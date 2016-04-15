@@ -39,4 +39,7 @@ i重邮项目课表查询以及校历查看功能模块。by android
 
 ###Thanks For [Jude95](https://github.com/Jude95) 对我的指导！
 
+###声明：
+  课表接口是重庆邮电大学蓝山工作室开发，因此不能开源。
+
 
