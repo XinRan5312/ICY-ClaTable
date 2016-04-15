@@ -10,7 +10,7 @@ i重邮项目课表查询以及校历查看功能模块。by android
 + HttpLoggingInterceptor: 拦截请求头和响应头，打印request和response的信息。
   打印信息Like this:
 
-  04-09 10:09:56.693 25351-656/com.example.zane.icy_clatable D/OkHttp: <-- 200 OK       http://xxxxxxxxx/kebiao.php?id=2014210876 (2936ms)
+  04-09 10:09:56.693 25351-656/com.example.zane.icy_clatable D/OkHttp: <-- 200 OK       http://xxxxxxxxxxxxxxxxxxxx/kebiao.php?id=2014210876 (2936ms)
   04-09 10:09:56.693 25351-656/com.example.zane.icy_clatable D/OkHttp: Date: Sat, 09 Apr 2016 06:01:21 GMT
   04-09 10:09:56.693 25351-656/com.example.zane.icy_clatable D/OkHttp: Server: Apache
   04-09 10:09:56.693 25351-656/com.example.zane.icy_clatable D/OkHttp: X-Powered-By: PHP/5.3.27-pl0-gentoo
