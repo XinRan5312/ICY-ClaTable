@@ -50,9 +50,9 @@ public class HeaderInterceptors implements Interceptor {
         //更改响应头
         String cacheControl = request.cacheControl().toString();
         return originalResponse.newBuilder()
-                        .code(code)
-                        .message(message)
-                        .body(ResponseBody.create(contentType, body))
+                       .code(code)
+                       .message(message)
+                       .body(ResponseBody.create(contentType, body))
                        .header("Cache-Control", cacheControl)
                        .removeHeader("Pragma")
                        .build();
