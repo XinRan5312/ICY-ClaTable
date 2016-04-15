@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.zane.icy_clatable.R;
-import com.example.zane.icy_clatable.data.bean.Clazz;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 
 import java.util.List;
@@ -63,17 +62,17 @@ public class ViewPageAdapter extends PagerAdapter{
 
         className.setText(clazzes.get(position).getCourse_name());
         teacher.setText(clazzes.get(position).getTeacher());
-        classRoom.setText(clazzes.get(position).getClassrom());
+        classRoom.setText(clazzes.get(position).getClassroom());
         time.setText(clazzes.get(position).getDuring());
         type.setText(clazzes.get(position).getKinds());
 
         String weekDuring="";
-        if (clazzes.get(position).getSingel_or_double().equals(" ")){
-            weekDuring = clazzes.get(position).getBengin_week()+"-"+clazzes.get(position).getEnd_week()+"周";
-        } else if (clazzes.get(position).getSingel_or_double().equals("1")){
-            weekDuring = clazzes.get(position).getBengin_week()+"-"+clazzes.get(position).getEnd_week()+"周(单周)";
-        } else if (clazzes.get(position).getSingel_or_double().equals("2")){
-            weekDuring = clazzes.get(position).getBengin_week()+"-"+clazzes.get(position).getEnd_week()+"周(双周)";
+        if (clazzes.get(position).getSingle_or_double().equals(" ")){
+            weekDuring = clazzes.get(position).getBegin_week()+"-"+clazzes.get(position).getEnd_week()+"周";
+        } else if (clazzes.get(position).getSingle_or_double().equals("1")){
+            weekDuring = clazzes.get(position).getBegin_week()+"-"+clazzes.get(position).getEnd_week()+"周(单周)";
+        } else if (clazzes.get(position).getSingle_or_double().equals("2")){
+            weekDuring = clazzes.get(position).getBegin_week()+"-"+clazzes.get(position).getEnd_week()+"周(双周)";
         }
         week.setText(weekDuring);
     }

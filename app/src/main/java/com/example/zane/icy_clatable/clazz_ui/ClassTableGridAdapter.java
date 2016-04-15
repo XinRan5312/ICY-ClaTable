@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.config.ColorConfig;
-import com.example.zane.icy_clatable.data.bean.Clazz;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 
 import java.util.List;
@@ -103,7 +102,7 @@ public class ClassTableGridAdapter extends BaseAdapter{
         if (!isNull){
             viewHolder.backGround.setImageResource(ColorConfig.getRandomColor());
             viewHolder.textView.setText(clazzes.get(position).get(0).getCourse_name()+"\n"+"@"
-                                                + clazzes.get(position).get(0).getClassrom());
+                                                + clazzes.get(position).get(0).getClassroom());
         }
 
         isNull = false;

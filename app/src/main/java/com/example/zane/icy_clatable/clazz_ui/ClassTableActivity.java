@@ -1,11 +1,9 @@
 package com.example.zane.icy_clatable.clazz_ui;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -15,7 +13,6 @@ import com.example.zane.icy_clatable.MainActivity;
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.app.App;
 import com.example.zane.icy_clatable.config.WeeksConfig;
-import com.example.zane.icy_clatable.data.bean.Clazz;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 import com.example.zane.icy_clatable.event.WeekChooseEvent;
 import com.example.zane.icy_clatable.utils.TimeCaluUtils;
@@ -25,12 +22,10 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Zane on 16/3/14.
@@ -145,9 +140,9 @@ public class ClassTableActivity extends AppCompatActivity{
             int begin_class = Integer.parseInt(clazz.getBegin_class());
 
             //如果在范围内
-            if (Integer.parseInt(clazzes.get(i).getBengin_week()) <= week && Integer.parseInt(clazzes.get(i).getEnd_week()) >= week){
+            if (Integer.parseInt(clazzes.get(i).getBegin_week()) <= week && Integer.parseInt(clazzes.get(i).getEnd_week()) >= week){
                 //分单双，符合条件才添加
-                if (clazzes.get(i).getSingel_or_double().equals(" ") || (week - Integer.parseInt(clazzes.get(i).getBengin_week())) % 2 == 0){
+                if (clazzes.get(i).getSingle_or_double().equals(" ") || (week - Integer.parseInt(clazzes.get(i).getBegin_week())) % 2 == 0){
                     notNullPosition.add(((begin_class - 1) / 2 * 7 + (weekDay - 1)));
                     clazz_adapter.get(((begin_class - 1) / 2 * 7 + (weekDay - 1))).add(clazzes.get(i));
                 }

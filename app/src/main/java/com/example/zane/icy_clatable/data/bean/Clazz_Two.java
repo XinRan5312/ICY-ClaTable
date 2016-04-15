@@ -11,7 +11,7 @@ public class Clazz_Two implements Serializable{
     /**
      * status : 200
      * message : 操作成功
-     * data : [{"weekday":"4","during":"第9-10节","begin_class":"9","end_class":"10","singel_or_double":" ","bengin_week":"1","end_week":"16","course_name":"数学建模","teacher":"数模组A","classrom":"3104"},{"weekday":"5","during":"第5-6节","begin_class":"5","end_class":"6","singel_or_double":"2","bengin_week":"2","end_week":"16","course_name":"数据库原理","teacher":"夏英","classrom":"2409"},{"weekday":"3","during":"第9-10节","begin_class":"9","end_class":"10","singel_or_double":" ","bengin_week":"3","end_week":"6","course_name":"形势与政策","teacher":"王小运","classrom":"2301"},{"weekday":"3","during":"第1-2节","begin_class":"1","end_class":"2","singel_or_double":" ","bengin_week":"1","end_week":"17","course_name":"数据库原理","teacher":"夏英","classrom":"2409"},{"weekday":"5","during":"第5-6节","begin_class":"5","end_class":"6","singel_or_double":"1","bengin_week":"1","end_week":"15","course_name":"计算机网络","teacher":"尚凤军  ","classrom":"2411"},{"weekday":"4","during":"第1-2节","begin_class":"1","end_class":"2","singel_or_double":" ","bengin_week":"1","end_week":"17","course_name":"面向对象程序设计－Java","teacher":"唐晓军","classrom":"S319"},{"weekday":"3","during":"第5-6节","begin_class":"5","end_class":"6","singel_or_double":" ","bengin_week":"1","end_week":"17","course_name":"计算机网络","teacher":"尚凤军  ","classrom":"2411"},{"weekday":"2","during":"第3-4节","begin_class":"3","end_class":"4","singel_or_double":" ","bengin_week":"1","end_week":"16","course_name":"操作系统","teacher":"熊安萍  ","classrom":"2105"},{"weekday":"1","during":"第9-10节","begin_class":"9","end_class":"10","singel_or_double":" ","bengin_week":"1","end_week":"3","course_name":"健康教育2","teacher":"严小燕","classrom":"3104"},{"weekday":"4","during":"第7-8节","begin_class":"7","end_class":"8","singel_or_double":" ","bengin_week":"1","end_week":"17","course_name":"英语演讲与辩论","teacher":"伍喆","classrom":"4303"},{"weekday":"4","during":"第3-4节","begin_class":"3","end_class":"4","singel_or_double":"2","bengin_week":"2","end_week":"16","course_name":"操作系统","teacher":"熊安萍  ","classrom":"2105"}]
+     * data : [{"weekday":"4","during":"第9-10节","begin_class":"9","end_class":"10","singel_or_double":" ","begin_week":"1","end_week":"16","course_name":"数学建模","teacher":"数模组A","classroom":"3104"},{"weekday":"5","during":"第5-6节","begin_class":"5","end_class":"6","singel_or_double":"2","begin_week":"2","end_week":"16","course_name":"数据库原理","teacher":"夏英","classroom":"2409"},{"weekday":"3","during":"第9-10节","begin_class":"9","end_class":"10","singel_or_double":" ","begin_week":"3","end_week":"6","course_name":"形势与政策","teacher":"王小运","classroom":"2301"},{"weekday":"3","during":"第1-2节","begin_class":"1","end_class":"2","singel_or_double":" ","begin_week":"1","end_week":"17","course_name":"数据库原理","teacher":"夏英","classroom":"2409"},{"weekday":"5","during":"第5-6节","begin_class":"5","end_class":"6","singel_or_double":"1","begin_week":"1","end_week":"15","course_name":"计算机网络","teacher":"尚凤军  ","classroom":"2411"},{"weekday":"4","during":"第1-2节","begin_class":"1","end_class":"2","singel_or_double":" ","begin_week":"1","end_week":"17","course_name":"面向对象程序设计－Java","teacher":"唐晓军","classroom":"S319"},{"weekday":"3","during":"第5-6节","begin_class":"5","end_class":"6","singel_or_double":" ","begin_week":"1","end_week":"17","course_name":"计算机网络","teacher":"尚凤军  ","classroom":"2411"},{"weekday":"2","during":"第3-4节","begin_class":"3","end_class":"4","singel_or_double":" ","begin_week":"1","end_week":"16","course_name":"操作系统","teacher":"熊安萍  ","classroom":"2105"},{"weekday":"1","during":"第9-10节","begin_class":"9","end_class":"10","singel_or_double":" ","begin_week":"1","end_week":"3","course_name":"健康教育2","teacher":"严小燕","classroom":"3104"},{"weekday":"4","during":"第7-8节","begin_class":"7","end_class":"8","singel_or_double":" ","begin_week":"1","end_week":"17","course_name":"英语演讲与辩论","teacher":"伍喆","classroom":"4303"},{"weekday":"4","during":"第3-4节","begin_class":"3","end_class":"4","singel_or_double":"2","begin_week":"2","end_week":"16","course_name":"操作系统","teacher":"熊安萍  ","classroom":"2105"}]
      */
 
     private int status;
@@ -22,11 +22,11 @@ public class Clazz_Two implements Serializable{
      * begin_class : 9
      * end_class : 10
      * singel_or_double :
-     * bengin_week : 1
+     * begin_week : 1
      * end_week : 16
      * course_name : 数学建模
      * teacher : 数模组A
-     * classrom : 3104
+     * classroom : 3104
      */
 
     private List<DataEntity> data;
@@ -60,12 +60,12 @@ public class Clazz_Two implements Serializable{
         private String during;
         private String begin_class;
         private String end_class;
-        private String singel_or_double;
-        private String bengin_week;
+        private String single_or_double;
+        private String begin_week;
         private String end_week;
         private String course_name;
         private String teacher;
-        private String classrom;
+        private String classroom;
         private String kinds;
 
         public String getKinds() {
@@ -108,20 +108,20 @@ public class Clazz_Two implements Serializable{
             this.end_class = end_class;
         }
 
-        public String getSingel_or_double() {
-            return singel_or_double;
+        public String getSingle_or_double() {
+            return single_or_double;
         }
 
-        public void setSingel_or_double(String singel_or_double) {
-            this.singel_or_double = singel_or_double;
+        public void setSingle_or_double(String singel_or_double) {
+            this.single_or_double = singel_or_double;
         }
 
-        public String getBengin_week() {
-            return bengin_week;
+        public String getBegin_week() {
+            return begin_week;
         }
 
-        public void setBengin_week(String bengin_week) {
-            this.bengin_week = bengin_week;
+        public void setBegin_week(String begin_week) {
+            this.begin_week = begin_week;
         }
 
         public String getEnd_week() {
@@ -148,12 +148,12 @@ public class Clazz_Two implements Serializable{
             this.teacher = teacher;
         }
 
-        public String getClassrom() {
-            return classrom;
+        public String getClassroom() {
+            return classroom;
         }
 
-        public void setClassrom(String classrom) {
-            this.classrom = classrom;
+        public void setClassroom(String classroom) {
+            this.classroom = classroom;
         }
     }
 }
