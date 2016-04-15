@@ -48,6 +48,7 @@ public class HeaderInterceptors implements Interceptor {
         //由于后台给的数据不规范（错误请求不更改响应头的状态码只改了json里面的status字段），所以我只能在拦截器里面
         //先解析一遍json数据，根据status和message去手动改状态码和描述
         String clazzData = null;
+        Log.v("OkHttp2", originalResponse.body().string()+"bb");
         try {
             String content = originalResponse.body().string();
             int code = 200;
