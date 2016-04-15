@@ -55,6 +55,8 @@ public class HeaderInterceptors implements Interceptor {
             String message = "";
 
             JSONObject clazzTwo = null;
+
+            
             clazzData = "";
             try {
 
