@@ -25,6 +25,13 @@ public class App extends Application{
         instance = this;
         Stetho.initializeWithDefaults(this);
 
+        RxJavaPlugins.getInstance().registerErrorHandler(new RxJavaErrorHandler() {
+            @Override
+            public void handleError(Throwable e) {
+                Log.w("Error",e);
+            }
+        });
+
     }
 
     public static App getInstance(){
