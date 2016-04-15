@@ -1,8 +1,8 @@
 package com.example.zane.icy_clatable.data.server;
 
-import com.example.zane.icy_clatable.data.bean.Clazz;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 
+import java.util.List;
 
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -22,6 +22,6 @@ public interface ServiceApi {
      */
     @Headers("Cache-Control: public, max-age=3600")
     @GET("kebiaonew.php")
-    Observable<Clazz_Two> getClassData(@Query("id") String userId, @Query("kind") String kind);
+    Observable<List<Clazz_Two.DataEntity>> getClassData(@Query("id") String userId, @Query("kind") String kind);
     
 }

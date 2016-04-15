@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.example.zane.icy_clatable.app.App;
 import com.example.zane.icy_clatable.config.ServiceApiConfig;
-import com.example.zane.icy_clatable.data.bean.Clazz;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 import com.example.zane.icy_clatable.data.server.ErrorTransform;
 import com.example.zane.icy_clatable.data.server.HeaderInterceptors;
@@ -12,10 +11,10 @@ import com.example.zane.icy_clatable.data.server.SchedulerTransform;
 import com.example.zane.icy_clatable.data.server.ServiceApi;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-
 import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 import retrofit2.RxJavaCallAdapterFactory;
@@ -64,11 +63,11 @@ public class ClassModel {
 
     }
 
-    public Observable<Clazz_Two> getClassData(String userId, String kind){
+    public Observable<List<Clazz_Two.DataEntity>> getClassData(String userId, String kind){
         return providesClassDataService()
                 .getClassData(userId, kind)
-                .compose(new SchedulerTransform<Clazz_Two>());
-                //.compose(new ErrorTransform<Clazz_Two>());
+                .compose(new SchedulerTransform<List<Clazz_Two.DataEntity>>())
+                .compose(new ErrorTransform<List<Clazz_Two.DataEntity>>());
     }
 
 }

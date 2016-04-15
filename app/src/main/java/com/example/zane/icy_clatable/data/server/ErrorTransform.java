@@ -34,9 +34,7 @@ public class ErrorTransform<T> implements Observable.Transformer<T, T>{
 
                 //判断异常是什么类型
                 Log.i(TAG, throwable.getClass().getName()+" "+throwable.getLocalizedMessage()+" "+throwable.getMessage());
-                String errorMessage = "hh";
-
-
+                String errorMessage = "";
                 //通过状态码判断错误
                 //由于后台给的状态信息很不规范，所以应该没有errorBody给我。科科
                 //我就全部拿message了，几个message也不知道是什么意思。。。唉
@@ -60,11 +58,11 @@ public class ErrorTransform<T> implements Observable.Transformer<T, T>{
                             break;
                     }
                 } else {
-                    Log.i(TAG, errorMessage+"2");
                     errorMessage = "网络错误";
                 }
-                Log.i(TAG, errorMessage);
+
                 ExUtils.Toast(errorMessage);
+
             }
         }).onErrorResumeNext(Observable.<T>empty());
     }

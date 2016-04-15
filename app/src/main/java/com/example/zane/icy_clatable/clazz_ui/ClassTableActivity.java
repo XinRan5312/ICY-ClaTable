@@ -1,6 +1,8 @@
 package com.example.zane.icy_clatable.clazz_ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +15,7 @@ import com.example.zane.icy_clatable.MainActivity;
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.app.App;
 import com.example.zane.icy_clatable.config.WeeksConfig;
+import com.example.zane.icy_clatable.data.ClassModel;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 import com.example.zane.icy_clatable.event.WeekChooseEvent;
 import com.example.zane.icy_clatable.utils.TimeCaluUtils;
@@ -26,6 +29,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+
+import rx.functions.Action1;
 
 /**
  * Created by Zane on 16/3/14.
@@ -55,6 +60,7 @@ public class ClassTableActivity extends AppCompatActivity{
     private List<Integer> nullPosition;
     private HashMap<Integer, Integer> map;
     private List<List<Clazz_Two.DataEntity>> clazz_adapter;
+    private ClassModel classModel;
 
     private static final String TAG = "ClassTableActivity";
 
@@ -68,12 +74,6 @@ public class ClassTableActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actvity_classtable_layout);
         init();
-
-        setUpDays((TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays()) - 1) * 7);
-
-        EventBus.getDefault().register(this);
-
-        setupClazz(TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays()));
 
         toolbar.setTitle(WeeksConfig.weeks[TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays())] + "(本周)");
         toolbar.setNavigationIcon(R.drawable.back4);
@@ -259,9 +259,20 @@ public class ClassTableActivity extends AppCompatActivity{
 
     private void init(){
 
+        EventBus.getDefault().register(this);
+
         //拿到课程
-        clazz = (Clazz_Two) getIntent().getSerializableExtra(MainActivity.CLAZZ);
-        clazzes = clazz.getData();
+        classModel = ClassModel.getInstance();
+        classModel.getClassData(getIntent().getStringExtra(MainActivity.CLAZZ), "bks")
+                .subscribe(new Action1<List<Clazz_Two.DataEntity>>() {
+                    @Override
+                    public void call(List<Clazz_Two.DataEntity> dataEntities) {
+                        if (dataEntities != null){
+                            clazzes = dataEntities;
+                            setupClazz(TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays()));
+                        }
+                    }
+                });
 
         day1 = (TextView)findViewById(R.id.day1);
         day2 = (TextView)findViewById(R.id.day2);
@@ -281,6 +292,8 @@ public class ClassTableActivity extends AppCompatActivity{
         nullPosition = new ArrayList<>();
         clazz_adapter = new ArrayList<>(42);
         map = new HashMap<>();
+
+        setUpDays((TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays()) - 1) * 7);
     }
 
     @Override
