@@ -56,7 +56,7 @@ public class HeaderInterceptors implements Interceptor {
 
             JSONObject clazzTwo = null;
 
-            
+
             clazzData = "";
             try {
 
