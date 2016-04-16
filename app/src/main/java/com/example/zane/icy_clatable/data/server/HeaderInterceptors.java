@@ -26,7 +26,7 @@ public class HeaderInterceptors implements Interceptor {
         Response originalResponse = chain.proceed(request);
         MediaType contentType = originalResponse.body().contentType();
 
-//        先解析一遍json数据，根据status和message去手动改状态码和描述
+        //先解析一遍json数据，根据status和message去手动改状态码和描述
         String originalContent = originalResponse.body().string();
 
         int code ;
@@ -39,7 +39,7 @@ public class HeaderInterceptors implements Interceptor {
             wrapper = new JSONObject(originalContent);
             message = wrapper.getString("message");
             code = wrapper.getInt("status");
-            body = wrapper.getString("data");
+            body = wrapper.getJSONArray("data").toString();
 
         } catch (JSONException e) {
 
@@ -47,7 +47,7 @@ public class HeaderInterceptors implements Interceptor {
 
         }
 
-        //更改响应头
+        //更改响应头,强制添加缓存
         String cacheControl = request.cacheControl().toString();
         return originalResponse.newBuilder()
                        .code(code)
