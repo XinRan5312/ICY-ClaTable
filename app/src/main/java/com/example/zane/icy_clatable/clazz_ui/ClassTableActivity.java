@@ -145,6 +145,8 @@ public class ClassTableActivity extends AppCompatActivity{
                 if (clazzes.get(i).getSingle_or_double().equals(" ") || (week - Integer.parseInt(clazzes.get(i).getBegin_week())) % 2 == 0){
                     notNullPosition.add(((begin_class - 1) / 2 * 7 + (weekDay - 1)));
                     clazz_adapter.get(((begin_class - 1) / 2 * 7 + (weekDay - 1))).add(clazzes.get(i));
+
+                    
                 }
             }
         }
