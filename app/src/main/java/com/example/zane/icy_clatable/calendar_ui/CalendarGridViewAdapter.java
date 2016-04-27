@@ -85,7 +85,6 @@ public class CalendarGridViewAdapter extends BaseAdapter{
         ViewGroup.LayoutParams params = viewHolder.textView.getLayoutParams();
         params.height = item_height;
         params.width = (ExUtils.getScreenWidth() - ExUtils.dip2px(40)) / 8;
-        Log.i(TAG, params.width+"");
         viewHolder.textView.setLayoutParams(params);
 
         //对每一个格子进行情况判断给值

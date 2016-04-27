@@ -5,6 +5,8 @@ import android.util.Log;
 import com.kermit.exutils.utils.ExUtils;
 import com.kermit.exutils.utils.LogUtils;
 
+import java.util.ServiceConfigurationError;
+
 import okhttp3.Response;
 import retrofit2.HttpException;
 import rx.Observable;
@@ -57,6 +59,8 @@ public class ErrorTransform<T> implements Observable.Transformer<T, T>{
                             errorMessage = "未知错误"+response.message();
                             break;
                     }
+                }else if (throwable instanceof ServiceConfigurationError){
+                    errorMessage = "服务器错误";
                 } else {
                     errorMessage = "网络错误";
                 }

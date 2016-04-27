@@ -6,6 +6,8 @@ import android.util.Log;
 import com.facebook.stetho.Stetho;
 import com.kermit.exutils.utils.ExUtils;
 import com.kermit.exutils.utils.LogUtils;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import rx.plugins.RxJavaErrorHandler;
 import rx.plugins.RxJavaPlugins;
@@ -16,6 +18,7 @@ import rx.plugins.RxJavaPlugins;
 public class App extends Application{
 
     private static App instance;
+    private RefWatcher mRefWatcher;
 
     @Override
     public void onCreate() {
@@ -31,6 +34,8 @@ public class App extends Application{
                 Log.w("Error",e);
             }
         });
+
+        mRefWatcher = LeakCanary.install(this);
 
     }
 

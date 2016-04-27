@@ -39,7 +39,7 @@ public class HeaderInterceptors implements Interceptor {
             wrapper = new JSONObject(originalContent);
             message = wrapper.getString("message");
             code = wrapper.getInt("status");
-            body = wrapper.getJSONArray("data").toString();
+            body = wrapper.getString("data");
 
         } catch (JSONException e) {
 

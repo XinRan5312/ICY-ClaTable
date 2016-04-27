@@ -61,6 +61,7 @@ public class ClassTableActivity extends AppCompatActivity{
     private HashMap<Integer, Integer> map;
     private List<List<Clazz_Two.DataEntity>> clazz_adapter;
     private ClassModel classModel;
+    private List<Integer> threePositon;
 
     private static final String TAG = "ClassTableActivity";
 
@@ -91,13 +92,19 @@ public class ClassTableActivity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 boolean isNull = false;
+                boolean isThree = false;
                 for (Integer null_position : nullPosition){
                     if (null_position == position){
                         isNull = true;
+                        for (Integer three_position : threePositon){
+                            if (null_position == (three_position + 7)){
+                                isThree = true;
+                            }
+                        }
                         break;
                     }
                 }
-                if (!isNull) {
+                if (!isNull || isThree) {
                     fragment = new ClassDetialDialogFragment();
                     fragment.setClazzes(clazz_adapter.get(position));
                     fragment.show(getFragmentManager(), "dialogclassdetailfragment");
@@ -127,6 +134,7 @@ public class ClassTableActivity extends AppCompatActivity{
         nullPosition.clear();
         clazz_adapter.clear();
         mutiplyPosition.clear();
+        threePositon.clear();
 
         //本来默认某一周的课集合就是1，但是方便适配器，就还是list套list。
         //开始构建42个格子
@@ -143,10 +151,16 @@ public class ClassTableActivity extends AppCompatActivity{
             if (Integer.parseInt(clazzes.get(i).getBegin_week()) <= week && Integer.parseInt(clazzes.get(i).getEnd_week()) >= week){
                 //分单双，符合条件才添加
                 if (clazzes.get(i).getSingle_or_double().equals(" ") || (week - Integer.parseInt(clazzes.get(i).getBegin_week())) % 2 == 0){
-                    notNullPosition.add(((begin_class - 1) / 2 * 7 + (weekDay - 1)));
-                    clazz_adapter.get(((begin_class - 1) / 2 * 7 + (weekDay - 1))).add(clazzes.get(i));
+                    int position = ((begin_class - 1) / 2 * 7 + (weekDay - 1));
 
-                    
+                    notNullPosition.add(position);
+                    clazz_adapter.get(position).add(clazzes.get(i));
+                    if ((position >= 0 && position <= 6) || (position >= 14 && position <= 20) || (position >= 21 && position <= 27)) {
+                        if (position == 0 || Integer.parseInt(clazzes.get(0).getEnd_class()) - Integer.parseInt(clazzes.get(0).getBegin_class()) > 1) {
+                            threePositon.add(position);
+                            clazz_adapter.get(position + 7).add(clazzes.get(i));
+                        }
+                    }
                 }
             }
         }
@@ -158,7 +172,11 @@ public class ClassTableActivity extends AppCompatActivity{
             nullPosition.remove(notNullPosition.get(i));
         }
 
-        adapter = new ClassTableGridAdapter(App.getInstance(), nullPosition, mutiplyPosition, clazz_adapter);
+        for (int position = 0; position < 42; position++){
+
+        }
+
+        adapter = new ClassTableGridAdapter(App.getInstance(), nullPosition, mutiplyPosition, clazz_adapter, threePositon);
         gridView.setAdapter(adapter);
     }
 
@@ -172,6 +190,7 @@ public class ClassTableActivity extends AppCompatActivity{
         nullPosition.clear();
         clazz_adapter.clear();
         map.clear();
+        threePositon.clear();
 
         //(begin_class - 1)/2*7 + (weekday-1) 就是42节课里面有课的坐标点..
         for (int i = 0; i < clazzes.size(); i++){
@@ -210,9 +229,24 @@ public class ClassTableActivity extends AppCompatActivity{
             nullPosition.remove(notNullPosition.get(i));
         }
 
+        //将有三节小课的大课找出来出来
+        for (int position = 0; position < 42; position++){
+            if ((position >= 0 && position <= 6) || (position >= 14 && position <= 20) || (position >= 21 && position <= 27)) {
+                if (position == 0 || Integer.parseInt(clazzes.get(0).getEnd_class()) - Integer.parseInt(clazzes.get(0).getBegin_class()) > 1) {
+                    threePositon.add(position);
+                    //clazz_adapter.get(position + 7).add(clazzes.get(position));
+                    for (int i = 0; i < map.size(); i++){
+                        if (map.get(i) == position){
+                            clazz_adapter.get(position + 7).add(clazzes.get(i));
+                        }
+                    }
+                }
+            }
+        }
+
         //怀恋Rxjava.......
 
-        adapter = new ClassTableGridAdapter(App.getInstance(), nullPosition, mutiplyPosition, clazz_adapter);
+        adapter = new ClassTableGridAdapter(App.getInstance(), nullPosition, mutiplyPosition, clazz_adapter, threePositon);
         gridView.setAdapter(adapter);
     }
 
@@ -293,6 +327,7 @@ public class ClassTableActivity extends AppCompatActivity{
         mutiplyPosition = new ArrayList<>();
         nullPosition = new ArrayList<>();
         clazz_adapter = new ArrayList<>(42);
+        threePositon = new ArrayList<>();
         map = new HashMap<>();
 
         setUpDays((TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays()) - 1) * 7);

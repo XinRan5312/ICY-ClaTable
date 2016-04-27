@@ -3,6 +3,7 @@ package com.example.zane.icy_clatable.calendar_ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ import butterknife.ButterKnife;
  */
 public class CalendarViewpagerFragment extends Fragment {
 
-    private static final String TAG = "CalendarViewpagerFragment";
+    private static final String TAG = "CalendarpagerFragment";
     public static final String MONTH_CALENDAR = "month_calendar";
     public static final String TOOLBAR_HEIGHT = "toolbar_height";
 
@@ -74,9 +75,10 @@ public class CalendarViewpagerFragment extends Fragment {
         View view = inflater.inflate(R.layout.item_calendar_viewpager, container, false);
         ButterKnife.bind(this, view);
 
-        //通过argument来获得需要展示的月份数
         month = getArguments().getInt(MONTH_CALENDAR);
         toolbarHeight = getArguments().getInt(TOOLBAR_HEIGHT);
+
+
         calendar = Calendar.getInstance();
         curCalendar = Calendar.getInstance();
         curCalendar.setTimeInMillis(System.currentTimeMillis());
@@ -115,11 +117,10 @@ public class CalendarViewpagerFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //Log.i(TAG, "上一个月最后一天： " + lastMonth_lastday + "当前的天数： " + currentDay);
-        //Log.i(TAG, "这个月第一天是星期几： " + firstDay_weekday + "这个月的最后一天: " + lastDay);
-
-
         //重置calendar,设置左侧周数
+
+        Log.i(TAG, month+"月份");
+
         calendar.set(Calendar.MONTH, month);
         //动态改变item的宽度，保持对齐
         ViewGroup.LayoutParams params = layoutCalendar.getLayoutParams();
@@ -137,6 +138,7 @@ public class CalendarViewpagerFragment extends Fragment {
         adapter = new CalendarGridViewAdapter(week_height, lastDay, currentDay, firstDay_weekday, lastMonth_lastday);
         gridviewCarlendar.setAdapter(adapter);
     }
+
 
     @Override
     public void onDestroyView() {

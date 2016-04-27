@@ -12,7 +12,9 @@ import android.widget.TextView;
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.config.WeeksConfig;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -115,6 +117,7 @@ public class CarlendarActivity extends AppCompatActivity {
 
         //设置适配器
         adapter = new CalendarViewpagerAdapter(getSupportFragmentManager());
+
         for (int i = 0; i < 12; i++) {
             adapter.addFragment(CalendarViewpagerFragment.newInstance(i, toolbarCarlendar.getLayoutParams().height));
         }
