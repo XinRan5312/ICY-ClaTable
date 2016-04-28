@@ -19,6 +19,7 @@ import com.example.zane.icy_clatable.data.ClassModel;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 import com.example.zane.icy_clatable.event.WeekChooseEvent;
 import com.example.zane.icy_clatable.utils.TimeCaluUtils;
+import com.kermit.exutils.utils.ExUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -88,30 +89,14 @@ public class ClassTableActivity extends AppCompatActivity{
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                boolean isNull = false;
-                boolean isThree = false;
-                for (Integer null_position : nullPosition){
-                    if (null_position == position){
-                        isNull = true;
-                        for (Integer three_position : threePositon){
-                            if (null_position == (three_position + 7)){
-                                isThree = true;
-                            }
-                        }
-                        break;
-                    }
-                }
-                if (!isNull || isThree) {
-                    fragment = new ClassDetialDialogFragment();
-                    fragment.setClazzes(clazz_adapter.get(position));
-                    fragment.show(getFragmentManager(), "dialogclassdetailfragment");
-                }
-                isNull = true;
-            }
-        });
+
+
+//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//            }
+//        });
 
         //选择周数的fab
         fab.setOnClickListener(new View.OnClickListener() {
@@ -170,10 +155,6 @@ public class ClassTableActivity extends AppCompatActivity{
         }
         for (int i = 0; i < notNullPosition.size(); i++){
             nullPosition.remove(notNullPosition.get(i));
-        }
-
-        for (int position = 0; position < 42; position++){
-
         }
 
         adapter = new ClassTableGridAdapter(App.getInstance(), nullPosition, mutiplyPosition, clazz_adapter, threePositon);
@@ -306,6 +287,17 @@ public class ClassTableActivity extends AppCompatActivity{
                         if (dataEntities != null){
                             clazzes = dataEntities;
                             setupClazz(TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays()));
+
+                            adapter.setOnItemClickListener(new ClassTableGridAdapter.OnItemClickListener() {
+                                @Override
+                                public void click(int position) {
+
+                                    fragment = new ClassDetialDialogFragment();
+                                    fragment.setClazzes(clazz_adapter.get(position));
+                                    fragment.show(getFragmentManager(), "dialogclassdetailfragment");
+
+                                }
+                            });
                         }
                     }
                 });

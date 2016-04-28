@@ -38,7 +38,14 @@ public class ClassTableGridAdapter extends BaseAdapter{
     private List<Integer> threePosition;
     private List<Integer> down_ThreePositon;
     private boolean isNull = false;
+    private OnItemClickListener listener;
 
+    public interface OnItemClickListener{
+        void click(int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
+    }
 
     public ClassTableGridAdapter(Context context, List<Integer> nullPosition, List<Integer> mutiplyPosition, List<List<Clazz_Two.DataEntity>> clazzes, List<Integer> threePosition){
         inflater = LayoutInflater.from(context);
@@ -93,17 +100,27 @@ public class ClassTableGridAdapter extends BaseAdapter{
         //如果这个课是空，设置不可点击，并且不获取数据
         for (int i = 0; i < nullPosition.size(); i++){
 
-            ViewGroup.LayoutParams params = viewHolder.frameLayout.getLayoutParams();
+            ViewGroup.LayoutParams params = convertView.getLayoutParams();
 
             if (position != nullPosition.get(i)){
                 continue;
             } else {
+
                 boolean isThree = false;
+
                 for (int j = 0; j < down_ThreePositon.size(); j++){
-                    if (i == down_ThreePositon.get(j)){
+                    if (position == down_ThreePositon.get(j)){
+
                         params.height = ExUtils.dip2px(60);
-                        viewHolder.frameLayout.setLayoutParams(params);
-                        convertView.setClickable(true);
+                        convertView.setLayoutParams(params);
+                        ExUtils.Toast(i+"");
+                        convertView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                listener.click(position);
+                            }
+                        });
+
                         isThree = true;
                         break;
                     } else {
@@ -113,14 +130,19 @@ public class ClassTableGridAdapter extends BaseAdapter{
 
                 if (!isThree){
                     params.height = ExUtils.dip2px(121);
-                    viewHolder.frameLayout.setLayoutParams(params);
-                    convertView.setClickable(false);
+                    convertView.setLayoutParams(params);
+
+                    convertView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ExUtils.Toast("haha");
+                        }
+                    });
+
                 }
 
                 isNull = true;
 
-
-                //viewHolder.backGround.setImageResource(R.color.white);
                 break;
             }
         }
@@ -128,8 +150,8 @@ public class ClassTableGridAdapter extends BaseAdapter{
         //课表改成42格的position。。。
         if (!isNull){
 
-            int height = App.getInstance().getResources().getDimensionPixelSize(R.dimen.clazz_grid_height);
-            AbsListView.LayoutParams params_three = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
+            //int height = App.getInstance().getResources().getDimensionPixelSize(R.dimen.clazz_grid_height);
+            //AbsListView.LayoutParams params_three = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height);
             ViewGroup.LayoutParams params = convertView.getLayoutParams();
 
             for (Integer i : threePosition){
@@ -148,20 +170,12 @@ public class ClassTableGridAdapter extends BaseAdapter{
                 convertView.setLayoutParams(params);
             }
 
-//            if ((position >= 0 && position <= 6) || (position >= 14 && position <= 20) || (position >= 21 && position <= 27)){
-//                if (position == 0 || Integer.parseInt(clazzes.get(position).get(0).getEnd_class()) - Integer.parseInt(clazzes.get(position).get(0).getBegin_class()) > 1){
-//                    params.height = ExUtils.dip2px(182);
-//                    //viewHolder.textView.setLayoutParams(params1);
-//                    convertView.setLayoutParams(params);
-//                    threePosition.add(position + 7);
-//                } else {
-//                    params.height = ExUtils.dip2px(121);
-//                    convertView.setLayoutParams(params);
-//                }
-//            } else {
-//                params.height = ExUtils.dip2px(121);
-//                convertView.setLayoutParams(params);
-//            }
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.click(position);
+                }
+            });
 
             viewHolder.backGround.setImageResource(ColorConfig.getRandomColor());
             viewHolder.textView.setText(clazzes.get(position).get(0).getCourse_name()+"\n"+"@"
