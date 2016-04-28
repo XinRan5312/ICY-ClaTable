@@ -90,14 +90,6 @@ public class ClassTableActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
-//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//            }
-//        });
-
         //选择周数的fab
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
