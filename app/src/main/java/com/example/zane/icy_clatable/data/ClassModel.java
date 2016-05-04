@@ -31,8 +31,8 @@ public class ClassModel {
         mContext = App.getInstance();
     }
 
-    //单例
-    static class SingletonHolder{
+    //静态代码块保持单例
+    private static class SingletonHolder{
         private static final ClassModel classModel = new ClassModel();
     }
 

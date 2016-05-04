@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -17,6 +18,9 @@ import com.example.zane.icy_clatable.app.App;
 import com.example.zane.icy_clatable.config.WeeksConfig;
 import com.example.zane.icy_clatable.data.ClassModel;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
+import com.example.zane.icy_clatable.data.server.FinalSubscriber;
+import com.example.zane.icy_clatable.data.server.SubscriberOnNextListener;
+import com.example.zane.icy_clatable.data.server.progress.ProgressCancelListener;
 import com.example.zane.icy_clatable.event.WeekChooseEvent;
 import com.example.zane.icy_clatable.utils.TimeCaluUtils;
 import com.kermit.exutils.utils.ExUtils;
@@ -65,11 +69,6 @@ public class ClassTableActivity extends AppCompatActivity{
     private List<Integer> threePositon;
 
     private static final String TAG = "ClassTableActivity";
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -272,27 +271,52 @@ public class ClassTableActivity extends AppCompatActivity{
 
         //拿到课程
         classModel = ClassModel.getInstance();
-        classModel.getClassData(getIntent().getStringExtra(MainActivity.CLAZZ), "bks")
-                .subscribe(new Action1<List<Clazz_Two.DataEntity>>() {
-                    @Override
-                    public void call(List<Clazz_Two.DataEntity> dataEntities) {
-                        if (dataEntities != null){
-                            clazzes = dataEntities;
-                            setupClazz(TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays()));
+//        classModel.getClassData(getIntent().getStringExtra(MainActivity.CLAZZ), "bks")
+//                .subscribe(new Action1<List<Clazz_Two.DataEntity>>() {
+//                    @Override
+//                    public void call(List<Clazz_Two.DataEntity> dataEntities) {
+//                        if (dataEntities != null){
+//                            clazzes = dataEntities;
+//                            setupClazz(TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays()));
+//
+//                            adapter.setOnItemClickListener(new ClassTableGridAdapter.OnItemClickListener() {
+//                                @Override
+//                                public void click(int position) {
+//
+//                                    fragment = new ClassDetialDialogFragment();
+//                                    fragment.setClazzes(clazz_adapter.get(position));
+//                                    fragment.show(getFragmentManager(), "dialogclassdetailfragment");
+//
+//                                }
+//                            });
+//                        }
+//                    }
+//                });
 
-                            adapter.setOnItemClickListener(new ClassTableGridAdapter.OnItemClickListener() {
-                                @Override
-                                public void click(int position) {
+        SubscriberOnNextListener listener = new SubscriberOnNextListener<List<Clazz_Two.DataEntity>>() {
+            @Override
+            public void onNext(List<Clazz_Two.DataEntity> dataEntities) {
+                Log.i(TAG, "onNext");
+                if (dataEntities != null){
+                    clazzes = dataEntities;
+                    setupClazz(TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays()));
 
-                                    fragment = new ClassDetialDialogFragment();
-                                    fragment.setClazzes(clazz_adapter.get(position));
-                                    fragment.show(getFragmentManager(), "dialogclassdetailfragment");
+                    adapter.setOnItemClickListener(new ClassTableGridAdapter.OnItemClickListener() {
+                        @Override
+                        public void click(int position) {
 
-                                }
-                            });
+                            fragment = new ClassDetialDialogFragment();
+                            fragment.setClazzes(clazz_adapter.get(position));
+                            fragment.show(getFragmentManager(), "dialogclassdetailfragment");
+
                         }
-                    }
-                });
+                    });
+                }
+            }
+        };
+
+        classModel.getClassData(getIntent().getStringExtra(MainActivity.CLAZZ), "bks")
+                .subscribe(new FinalSubscriber<List<Clazz_Two.DataEntity>>(ClassTableActivity.this, listener));
 
         day1 = (TextView)findViewById(R.id.day1);
         day2 = (TextView)findViewById(R.id.day2);

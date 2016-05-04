@@ -30,7 +30,6 @@ public class ColorConfig {
                 return R.color.class5;
         }
     }
-
     public static List<Integer> getAllColor(List<Integer> nullPosition){
         boolean isSame = false;
         for (int i = 0; i < 42; i++){
@@ -49,5 +48,4 @@ public class ColorConfig {
 
         return Colors;
     }
-
 }

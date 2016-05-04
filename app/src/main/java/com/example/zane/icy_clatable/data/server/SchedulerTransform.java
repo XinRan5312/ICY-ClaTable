@@ -18,12 +18,6 @@ public class SchedulerTransform<T> implements Observable.Transformer<T, T> {
     @Override
     public Observable<T> call(Observable<T> tObservable) {
         return tObservable
-                       .doOnError(new Action1<Throwable>() {
-                           @Override
-                           public void call(Throwable throwable) {
-                               LogUtils.i(TAG, throwable.getLocalizedMessage());
-                           }
-                       })
                        .subscribeOn(Schedulers.io())
                        .observeOn(AndroidSchedulers.mainThread())
                        .unsubscribeOn(Schedulers.io());

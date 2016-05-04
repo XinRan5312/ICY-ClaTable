@@ -1,7 +1,9 @@
 package com.example.zane.icy_clatable.data.server;
 
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.zane.icy_clatable.app.App;
 import com.kermit.exutils.utils.ExUtils;
 import com.kermit.exutils.utils.LogUtils;
 
@@ -20,7 +22,7 @@ import rx.functions.Action1;
  */
 public class ErrorTransform<T> implements Observable.Transformer<T, T>{
 
-    private String TAG = "ErrorTransform";
+    private static final String TAG = "ErrorTransform";
 
     //错误处理对象
     private Action1<Throwable> errorHandler;
@@ -65,7 +67,7 @@ public class ErrorTransform<T> implements Observable.Transformer<T, T>{
                     errorMessage = "网络错误";
                 }
 
-                ExUtils.Toast(errorMessage);
+                Toast.makeText(App.getInstance(), errorMessage, Toast.LENGTH_SHORT).show();
 
             }
         }).onErrorResumeNext(Observable.<T>empty());
