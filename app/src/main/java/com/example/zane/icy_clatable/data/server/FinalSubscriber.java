@@ -15,6 +15,7 @@ import rx.schedulers.Schedulers;
  * Created by Zane on 16/5/4.
  */
 public class FinalSubscriber<T> extends Subscriber<T> implements ProgressCancelListener{
+
     
     private static final String TAG  = "FinalSubscriber";
 
