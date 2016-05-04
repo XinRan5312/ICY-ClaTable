@@ -7,7 +7,7 @@ i重邮项目课表查询以及校历查看功能模块。by android
 
 + HeaderIntercepteors: 拦截请求头和响应头，动态进行Http缓存。  
 
-+ HttpLoggingInterceptor: 拦截请求头和响应头，打印request和response的信息。
++ HttpLoggingInterceptor: 拦截请求头和响应头，打印request和response的信息。 
   打印信息Like this:
 
   04-09 10:09:56.693 25351-656/com.example.zane.icy_clatable D/OkHttp: <-- 200 OK       http://xxxxxxxxxxxxxxxxxxxx/kebiao.php?id=xxxxxxxxxx (2936ms)
