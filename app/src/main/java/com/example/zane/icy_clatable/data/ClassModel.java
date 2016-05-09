@@ -9,10 +9,12 @@ import com.example.zane.icy_clatable.data.server.ErrorTransform;
 import com.example.zane.icy_clatable.data.server.HeaderInterceptors;
 import com.example.zane.icy_clatable.data.server.SchedulerTransform;
 import com.example.zane.icy_clatable.data.server.ServiceApi;
+import com.example.zane.icy_clatable.utils.FileUtil;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.util.List;
 
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.GsonConverterFactory;
@@ -45,11 +47,16 @@ public class ClassModel {
         //添加body日志打印，http，stetho调试的拦截器
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        //web缓存, 10M
+        Cache cache = new Cache(FileUtil.getDiskCacheDir("response"), 1024 * 1024 * 10);
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .addNetworkInterceptor(new HeaderInterceptors())
                 .addNetworkInterceptor(new StethoInterceptor())
+                .cache(cache)
                 .build();
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ServiceApiConfig.BASE_URL)
