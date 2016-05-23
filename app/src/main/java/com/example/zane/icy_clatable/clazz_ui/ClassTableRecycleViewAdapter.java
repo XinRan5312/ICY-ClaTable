@@ -28,7 +28,6 @@ public class ClassTableRecycleViewAdapter extends RecyclerView.Adapter<ClassTabl
     public ClassTableRecycleViewAdapter(Context mContext){
         this.context = mContext;
         weeks = WeeksConfig.weeks;
-
     }
 
     @Override

@@ -64,16 +64,9 @@ public class ViewPageAdapter extends PagerAdapter{
         teacher.setText(clazzes.get(position).getTeacher());
         classRoom.setText(clazzes.get(position).getClassroom());
         time.setText(clazzes.get(position).getDuring());
-        type.setText(clazzes.get(position).getKinds());
+        type.setText(clazzes.get(position).getKclbdm());
 
-        String weekDuring="";
-        if (clazzes.get(position).getSingle_or_double().equals(" ")){
-            weekDuring = clazzes.get(position).getBegin_week()+"-"+clazzes.get(position).getEnd_week()+"周";
-        } else if (clazzes.get(position).getSingle_or_double().equals("1")){
-            weekDuring = clazzes.get(position).getBegin_week()+"-"+clazzes.get(position).getEnd_week()+"周(单周)";
-        } else if (clazzes.get(position).getSingle_or_double().equals("2")){
-            weekDuring = clazzes.get(position).getBegin_week()+"-"+clazzes.get(position).getEnd_week()+"周(双周)";
-        }
+        String weekDuring = clazzes.get(position).getBegin_week()+"-"+clazzes.get(position).getEnd_week()+"周";
         week.setText(weekDuring);
     }
 

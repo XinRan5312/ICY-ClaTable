@@ -122,17 +122,16 @@ public class ClassTableActivity extends AppCompatActivity{
             Clazz_Two.DataEntity clazz = clazzes.get(i);
             int weekDay = Integer.parseInt(clazz.getWeekday());
             int begin_class = Integer.parseInt(clazz.getBegin_class());
-
+            String zc = clazz.getZc();
             //如果在范围内
-            if (Integer.parseInt(clazzes.get(i).getBegin_week()) <= week && Integer.parseInt(clazzes.get(i).getEnd_week()) >= week){
-                //分单双，符合条件才添加
-                if (clazzes.get(i).getSingle_or_double().equals(" ") || (week - Integer.parseInt(clazzes.get(i).getBegin_week())) % 2 == 0){
+            if (clazz.getBegin_week() <= week && clazz.getEnd_week() >= week){
+                //直接看有没有这个课
+                if (zc.charAt(week - 1) == '1'){
                     int position = ((begin_class - 1) / 2 * 7 + (weekDay - 1));
-
                     notNullPosition.add(position);
                     clazz_adapter.get(position).add(clazzes.get(i));
-                    if ((position >= 0 && position <= 6) || (position >= 14 && position <= 20) || (position >= 21 && position <= 27)) {
-                        if (position == 0 || Integer.parseInt(clazzes.get(0).getEnd_class()) - Integer.parseInt(clazzes.get(0).getBegin_class()) > 1) {
+                    if ((position >= 0 && position <= 6) || (position >= 14 && position <= 20) || (position >= 28 && position <= 34)) {
+                        if (Integer.parseInt(clazzes.get(i).getEnd_class()) - Integer.parseInt(clazzes.get(i).getBegin_class()) > 1) {
                             threePositon.add(position);
                             clazz_adapter.get(position + 7).add(clazzes.get(i));
                         }
@@ -149,6 +148,14 @@ public class ClassTableActivity extends AppCompatActivity{
         }
 
         adapter = new ClassTableGridAdapter(App.getInstance(), nullPosition, mutiplyPosition, clazz_adapter, threePositon);
+        adapter.setOnItemClickListener(new ClassTableGridAdapter.OnItemClickListener() {
+            @Override
+            public void click(int position) {
+                fragment = new ClassDetialDialogFragment();
+                fragment.setClazzes(clazz_adapter.get(position));
+                fragment.show(getFragmentManager(), "dialogclassdetailfragment");
+            }
+        });
         gridView.setAdapter(adapter);
     }
 
@@ -203,8 +210,8 @@ public class ClassTableActivity extends AppCompatActivity{
 
         //将有三节小课的大课找出来出来
         for (int position = 0; position < 42; position++){
-            if ((position >= 0 && position <= 6) || (position >= 14 && position <= 20) || (position >= 21 && position <= 27)) {
-                if (position == 0 || Integer.parseInt(clazzes.get(0).getEnd_class()) - Integer.parseInt(clazzes.get(0).getBegin_class()) > 1) {
+            if ((position >= 0 && position <= 6) || (position >= 14 && position <= 20) || (position >= 28 && position <= 34)) {
+                if (Integer.parseInt(clazzes.get(0).getEnd_class()) - Integer.parseInt(clazzes.get(0).getBegin_class()) > 1) {
                     threePositon.add(position);
                     //clazz_adapter.get(position + 7).add(clazzes.get(position));
                     for (int i = 0; i < map.size(); i++){
@@ -219,6 +226,14 @@ public class ClassTableActivity extends AppCompatActivity{
         //怀恋Rxjava.......
 
         adapter = new ClassTableGridAdapter(App.getInstance(), nullPosition, mutiplyPosition, clazz_adapter, threePositon);
+        adapter.setOnItemClickListener(new ClassTableGridAdapter.OnItemClickListener() {
+            @Override
+            public void click(int position) {
+                fragment = new ClassDetialDialogFragment();
+                fragment.setClazzes(clazz_adapter.get(position));
+                fragment.show(getFragmentManager(), "dialogclassdetailfragment");
+            }
+        });
         gridView.setAdapter(adapter);
     }
 
@@ -282,11 +297,9 @@ public class ClassTableActivity extends AppCompatActivity{
 //                            adapter.setOnItemClickListener(new ClassTableGridAdapter.OnItemClickListener() {
 //                                @Override
 //                                public void click(int position) {
-//
 //                                    fragment = new ClassDetialDialogFragment();
 //                                    fragment.setClazzes(clazz_adapter.get(position));
 //                                    fragment.show(getFragmentManager(), "dialogclassdetailfragment");
-//
 //                                }
 //                            });
 //                        }
@@ -300,21 +313,9 @@ public class ClassTableActivity extends AppCompatActivity{
                 if (dataEntities != null){
                     clazzes = dataEntities;
                     setupClazz(TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays()));
-
-                    adapter.setOnItemClickListener(new ClassTableGridAdapter.OnItemClickListener() {
-                        @Override
-                        public void click(int position) {
-
-                            fragment = new ClassDetialDialogFragment();
-                            fragment.setClazzes(clazz_adapter.get(position));
-                            fragment.show(getFragmentManager(), "dialogclassdetailfragment");
-
-                        }
-                    });
                 }
             }
         };
-
         classModel.getClassData(getIntent().getStringExtra(MainActivity.CLAZZ), "bks")
                 .subscribe(new FinalSubscriber<List<Clazz_Two.DataEntity>>(ClassTableActivity.this, listener));
 

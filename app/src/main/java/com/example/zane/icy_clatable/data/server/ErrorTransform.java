@@ -24,9 +24,6 @@ public class ErrorTransform<T> implements Observable.Transformer<T, T>{
 
     private static final String TAG = "ErrorTransform";
 
-    //错误处理对象
-    private Action1<Throwable> errorHandler;
-
     @Override
     public Observable<T> call(Observable<T> tObservable) {
 

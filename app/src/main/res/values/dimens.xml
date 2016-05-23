@@ -2,5 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="clazz_grid_height">182dp</dimen>
+    <dimen name="clazz_grid_height_182">182dp</dimen>
+    <dimen name="clazz_grid_height_60">60dp</dimen>
+    <dimen name="clazz_grid_height_121">121dp</dimen>
 </resources>
