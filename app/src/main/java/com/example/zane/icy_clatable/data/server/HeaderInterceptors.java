@@ -1,5 +1,9 @@
 package com.example.zane.icy_clatable.data.server;
 
+import android.util.Log;
+
+import com.kermit.exutils.utils.ExUtils;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,11 +22,15 @@ import okhttp3.ResponseBody;
  */
 public class HeaderInterceptors implements Interceptor {
 
+    private static final String TAG = "HeaderInterceptors";
+
     @Override
     public Response intercept(Chain chain) throws IOException {
+
+        Log.i(TAG, "拦截");
+
         Request request = chain.request();
 
-        //获得响应头，如果有网络，就缓存一分钟,没有网络缓存四周
         Response originalResponse = chain.proceed(request);
         MediaType contentType = originalResponse.body().contentType();
 
@@ -42,9 +50,7 @@ public class HeaderInterceptors implements Interceptor {
             body = wrapper.getString("data");
 
         } catch (JSONException e) {
-
             throw new ServiceConfigurationError("服务器错误："+e.getLocalizedMessage());
-
         }
 
         //更改响应头,强制添加缓存
