@@ -33,8 +33,6 @@ public class ErrorTransform<T> implements Observable.Transformer<T, T>{
                 Log.i(TAG, throwable.getClass().getName()+" "+throwable.getLocalizedMessage()+" "+throwable.getMessage());
                 String errorMessage = "";
                 //通过状态码判断错误
-                //由于后台给的状态信息很不规范，所以应该没有errorBody给我。科科
-                //我就全部拿message了，几个message也不知道是什么意思。。。唉
                 if (throwable instanceof HttpException) {
                     HttpException response = (HttpException) throwable;
                     switch (response.code()){
