@@ -14,11 +14,11 @@ import retrofit2.HttpException;
 import rx.Observable;
 import rx.functions.Action;
 import rx.functions.Action1;
+import rx.functions.Func1;
 
 /**
  * Created by Zane on 16/4/9.
- * 更优雅的转换Observable去处理错误
- * Thanks For Jude
+ * 更优雅的转换Observable去统一处理错误
  */
 public class ErrorTransform<T> implements Observable.Transformer<T, T>{
 
@@ -26,13 +26,9 @@ public class ErrorTransform<T> implements Observable.Transformer<T, T>{
 
     @Override
     public Observable<T> call(Observable<T> tObservable) {
-
-        //onErrorResumeNext:如果发生错误就会调用这个方法，然后返回一个空的并且会
-        //直接调用Subscriber的onComplataed()方法的Observable
-        return tObservable.doOnError(new Action1<Throwable>() {
+        return tObservable.onErrorResumeNext(new Func1<Throwable, Observable<? extends T>>() {
             @Override
-            public void call(Throwable throwable) {
-
+            public Observable<? extends T> call(Throwable throwable) {
                 //判断异常是什么类型
                 Log.i(TAG, throwable.getClass().getName()+" "+throwable.getLocalizedMessage()+" "+throwable.getMessage());
                 String errorMessage = "";
@@ -66,7 +62,8 @@ public class ErrorTransform<T> implements Observable.Transformer<T, T>{
 
                 Toast.makeText(App.getInstance(), errorMessage, Toast.LENGTH_SHORT).show();
 
+                return Observable.empty();
             }
-        }).onErrorResumeNext(Observable.<T>empty());
+        });
     }
 }
