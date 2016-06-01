@@ -29,8 +29,7 @@ i重邮项目课表查询以及校历查看功能模块。by android
 
 + SchedulerTransform: 线程调度转换器。Compose+Transform结合使用。进行所有网络请求的线程调度。
 
-+ ErrorTransform: 错误处理转换器。也是Compose+Transform结合使用。进行所有的错误处理。所以Presenter层只需要关心onNext()方法
-  只需要关心获取到的数据对象，直接用new Action1(XXX xxx)，这样处理数据更加优雅。
++ ErrorTransform: 错误处理转换器。也是Compose+Transform结合使用。进行统一的网络请求错误处理。所以Presenter层只需要关心onNext()方法，只需要关心获取到的数据对象。直接用new Action1(XXX xxx)（lambda更爽），这样处理数据更加优雅。做法是在Transform中通过调用原Observable的onErrorResumeNext()方法，进行HttpException的分析以及将原Observable转换成一个空的Observale（Observable.empty()，会直接调用Observer的onCompleted()方法）。同样可以使用doOnError＋onErrorResumeNext()方法实现上述功能，但是会多余的调用doOnError()方法。至于为什么要使用onErrorResumeNext()而不使用onErrorReturn()方法，请自己查询原因。
   
 + ProgressDialog的绑定：请求数据的时候默认使用progressDialog，并且请求数据的时候不用关心ProgressDialog的show, dismiss。默认所有的数据请求都用FinalSubscriber来做订阅者对象，这里面做的工作主要是将请求转交给ProgressDialogHandler去让view响应业务逻辑。SubscriberOnNextListener用来回调onNext方法（前面的工作让我们只需要关心onNext()），progressDialogCancelListener回调在取数据的过程中取消订阅。
   
@@ -38,8 +37,6 @@ i重邮项目课表查询以及校历查看功能模块。by android
   1. 通过提前解析json数据，通过status和message来去修改响应头的状态码。
   2. 由于请求到的数据是一个Wrapper类，里面包含status(状态码)message(描述)data(理解成真正需要的数据)。如果把这个Wrapper类返回到客户端代码比较累赘。所以将外层剥离，因为status和message对于我来说已经没用了。所以更改response的body为data数据。
   具体代码可以看拦截器里面的实现.
-
-###Thanks For [Jude95](https://github.com/Jude95) 对我的指导！
 
 ###声明：
   课表接口是由重庆邮电大学蓝山工作室开发，由于项目使用，因此不能开源。
