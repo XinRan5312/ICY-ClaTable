@@ -4,16 +4,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.zane.icy_clatable.app.App;
-import com.kermit.exutils.utils.ExUtils;
-import com.kermit.exutils.utils.LogUtils;
 
 import java.util.ServiceConfigurationError;
 
-import okhttp3.Response;
 import retrofit2.HttpException;
 import rx.Observable;
-import rx.functions.Action;
-import rx.functions.Action1;
 import rx.functions.Func1;
 
 /**

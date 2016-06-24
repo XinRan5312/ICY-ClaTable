@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
-import com.kermit.exutils.utils.ExUtils;
+import com.jude.utils.JUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -47,7 +47,7 @@ public class ClassDetialDialogFragment extends DialogFragment{
         super.onResume();
         Window window = getDialog().getWindow();
         window.setGravity(Gravity.CENTER);
-        window.setLayout((int) (ExUtils.getScreenWidth() * 0.8), (int) (ExUtils.getScreenHeight() * 0.6));
+        window.setLayout((int) (JUtils.getScreenWidth() * 0.8), (int) (JUtils.getScreenHeight() * 0.6));
     }
 
     public void setClazzes(List<Clazz_Two.DataEntity> clazzes){

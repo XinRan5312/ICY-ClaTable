@@ -13,7 +13,7 @@ import android.view.Window;
 
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.app.App;
-import com.kermit.exutils.utils.ExUtils;
+import com.jude.utils.JUtils;
 
 /**
  * Created by Zane on 16/3/14.
@@ -28,7 +28,7 @@ public class ChooseWeekDialogFragment extends DialogFragment{
     public void onResume() {
         super.onResume();
         Window window = getDialog().getWindow();
-        window.setLayout((int)(ExUtils.getScreenWidth() * 0.6), (int)(ExUtils.getScreenHeight() * 0.5));
+        window.setLayout((int)(JUtils.getScreenWidth() * 0.6), (int)(JUtils.getScreenHeight() * 0.5));
         window.setGravity(Gravity.CENTER);
     }
 

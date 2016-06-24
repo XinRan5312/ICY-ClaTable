@@ -4,8 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.facebook.stetho.Stetho;
-import com.kermit.exutils.utils.ExUtils;
-import com.kermit.exutils.utils.LogUtils;
+import com.jude.utils.JUtils;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -23,8 +22,8 @@ public class App extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        ExUtils.initialize(this);
-        LogUtils.DEBUG = true;
+        JUtils.initialize(this);
+        JUtils.setDebug(false, "debug");
         instance = this;
         Stetho.initializeWithDefaults(this);
 

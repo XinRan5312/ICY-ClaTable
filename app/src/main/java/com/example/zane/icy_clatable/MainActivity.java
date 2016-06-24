@@ -2,7 +2,6 @@ package com.example.zane.icy_clatable;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -11,15 +10,6 @@ import android.widget.Toast;
 
 import com.example.zane.icy_clatable.calendar_ui.CarlendarActivity;
 import com.example.zane.icy_clatable.clazz_ui.ClassTableActivity;
-import com.example.zane.icy_clatable.data.ClassModel;
-import com.example.zane.icy_clatable.data.bean.Clazz_Two;
-import com.kermit.exutils.utils.ExUtils;
-
-import java.io.Serializable;
-import java.util.List;
-
-import rx.Subscriber;
-import rx.functions.Action1;
 
 public class MainActivity extends AppCompatActivity {
 

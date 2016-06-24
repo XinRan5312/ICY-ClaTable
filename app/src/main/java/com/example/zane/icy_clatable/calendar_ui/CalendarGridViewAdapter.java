@@ -1,6 +1,5 @@
 package com.example.zane.icy_clatable.calendar_ui;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +8,8 @@ import android.widget.TextView;
 
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.app.App;
-import com.kermit.exutils.utils.ExUtils;
+import com.jude.utils.JUtils;
+
 
 /**
  * Created by Zane on 16/3/31.
@@ -84,7 +84,7 @@ public class CalendarGridViewAdapter extends BaseAdapter{
         //动态指定日历item的高度问题
         ViewGroup.LayoutParams params = viewHolder.textView.getLayoutParams();
         params.height = item_height;
-        params.width = (ExUtils.getScreenWidth() - ExUtils.dip2px(40)) / 8;
+        params.width = (JUtils.getScreenWidth() - JUtils.dip2px(40)) / 8;
         viewHolder.textView.setLayoutParams(params);
 
         //对每一个格子进行情况判断给值

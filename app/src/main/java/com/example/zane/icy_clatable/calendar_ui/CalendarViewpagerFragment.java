@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.utils.TimeCaluUtils;
-import com.kermit.exutils.utils.ExUtils;
+import com.jude.utils.JUtils;
 
 import java.util.Calendar;
 
@@ -124,7 +124,7 @@ public class CalendarViewpagerFragment extends Fragment {
         calendar.set(Calendar.MONTH, month);
         //动态改变item的宽度，保持对齐
         ViewGroup.LayoutParams params = layoutCalendar.getLayoutParams();
-        params.width = (ExUtils.getScreenWidth() - ExUtils.dip2px(40)) / 8;
+        params.width = (JUtils.getScreenWidth() - JUtils.dip2px(40)) / 8;
         layoutCalendar.setLayoutParams(params);
 
         week1.setText(TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays_random(calendar.getTimeInMillis())) + "");
@@ -134,7 +134,7 @@ public class CalendarViewpagerFragment extends Fragment {
         week5.setText(TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays_random(calendar.getTimeInMillis())) + 4 + "");
         week6.setText(TimeCaluUtils.getCurWeek(TimeCaluUtils.CaluDays_random(calendar.getTimeInMillis())) + 5 + "");
         //通过屏幕的一半的高度减去toolbar和其他区域的高度除以6，解决日历手机适配的高度问题。fuck！
-        int week_height = (((ExUtils.getScreenHeight() - toolbarHeight) / 2) - (ExUtils.dip2px(105))) / 6;
+        int week_height = (((JUtils.getScreenHeight() - toolbarHeight) / 2) - (JUtils.dip2px(105))) / 6;
         adapter = new CalendarGridViewAdapter(week_height, lastDay, currentDay, firstDay_weekday, lastMonth_lastday);
         gridviewCarlendar.setAdapter(adapter);
     }
