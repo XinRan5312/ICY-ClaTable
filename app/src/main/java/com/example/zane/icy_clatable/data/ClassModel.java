@@ -7,6 +7,7 @@ import com.example.zane.icy_clatable.config.ServiceApiConfig;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
 import com.example.zane.icy_clatable.data.server.ErrorTransform;
 import com.example.zane.icy_clatable.data.server.HeaderInterceptors;
+import com.example.zane.icy_clatable.data.server.MyRxErrorPlugin;
 import com.example.zane.icy_clatable.data.server.SchedulerTransform;
 import com.example.zane.icy_clatable.data.server.ServiceApi;
 import com.example.zane.icy_clatable.utils.FileUtil;
@@ -21,6 +22,7 @@ import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
 import retrofit2.RxJavaCallAdapterFactory;
 import rx.Observable;
+import rx.plugins.RxJavaPlugins;
 
 /**
  * Created by Zane on 16/3/14.
@@ -71,6 +73,7 @@ public class ClassModel {
     }
 
     public Observable<List<Clazz_Two.DataEntity>> getClassData(String userId, String kind){
+        //RxJavaPlugins.getInstance().registerErrorHandler(new MyRxErrorPlugin());
         return providesClassDataService()
                 .getClassData(userId, kind)
                 .compose(new SchedulerTransform<List<Clazz_Two.DataEntity>>())

@@ -17,7 +17,6 @@ import com.example.zane.icy_clatable.R;
 import com.example.zane.icy_clatable.app.App;
 import com.example.zane.icy_clatable.config.ColorConfig;
 import com.example.zane.icy_clatable.data.bean.Clazz_Two;
-import com.kermit.exutils.utils.ExUtils;
 
 import java.util.ArrayList;
 import java.util.List;

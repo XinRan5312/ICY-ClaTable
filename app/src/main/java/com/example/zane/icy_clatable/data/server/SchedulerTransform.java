@@ -1,7 +1,5 @@
 package com.example.zane.icy_clatable.data.server;
 
-import com.kermit.exutils.utils.LogUtils;
-
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
